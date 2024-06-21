@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Web</title>
+  <link rel="shortcut icon" href="https://w7.pngwing.com/pngs/480/819/png-transparent-telegram-icon-telegram-logo-telegram-app-social-icon-messaging-messenger-thumbnail.png">
+  <link rel="stylesheet" href="../static/css.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</head>
+<body>
+    <center>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'login' %}">Login</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'help' %}">Help</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'create_profile' %}">Create_Profile</a></button>
+    {% if request.user.is_authenticated %}
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'calculator' %}">Calculator</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'memory_game' %}">Calculator</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'snake' %}">Snake</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'quiz' %}">Quiz</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'name' %}">Create Group</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'channel' %}">Create Channel</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'user_edit' %}">User_Edit</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'about' %}">About_Our_Community</a></button>
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'logout' %}">Logout</a></button>
+  </center>
+  {% else %}
+  {% endif %}
+<section class="mainApp">
+  <div class="leftPanel">
+    <header>
+      <button class="trigger">
+        <!-- <svg viewBox="0 0 24 24">
+    <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+</svg> -->
+    <ion-icon name="reorder-three" style="width: 35px;height: 35px;margin-top: -9px;margin-left: -8px;margin-right: -15px;margin-bottom: -10px;"></ion-icon>
+      </button>
+      <form action="" method="get">
+      <input  name="search" class="searchChats" type="search" placeholder="Search"/>
+    </form>
+    </header>
+      <div class="chats">
+        {% for i in chats %}
+          <div class="chatButton ">
+            <div class="chatInfo">
+            <form action="" method="get">
+              <input type="hidden" value="{{i.id}}" name="id">
+                <div class="image my-image">
+                </div>
+                <p class="name">
+              <button type="submit" style="color: rgb(51, 72, 191);font-size: 13px;">  
+                  <h2>                    
+                      {{i.name}}
+                  </h2>
+              </button>
+                </p>
+                <p class="message"></p>
+            </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+  </div>
+  <div class="rightPanel">
+    <div class="topBar">
+      <div class="rightSide">
+        {% if request.user.is_authenticated %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+      <a href="{% url 'add' chat.id%}"><i class="material-icons"><ion-icon name="person-add" style="width: 25px;height: 25px;color: rgb(0, 0, 255);"></ion-icon></i></a>
+      </button>
+      {% else %}
+      {% endif %}
+      {% if chat %}
+      <i class="material-icons"></i>
+    <button class="tbButton otherOptions">
+    <a href="{% url 'remove' chat.id%}"><i class="material-icons"><ion-icon name="person-remove" style="width: 25px;height: 25px;color: rgb(255, 0, 0);"></ion-icon></i></a>
+    </button>
+    {% else %}
+    {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+      <a href="{% url 'delete' chat.id%}"><i class="material-icons"><ion-icon name="trash" style="width: 25px;height: 25px;color: red;"></ion-icon></i></a>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+      <a href="{% url 'edit' chat.id%}"><i class="material-icons"><ion-icon name="pencil" style="width: 25px;height: 25px;color: orange;"></ion-icon></i></a>
+      </button>
+      {% else %}
+      {% endif %}
+      {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+        <i class="material-icons"><ion-icon name="exit-outline" style="width: 25px;height: 25px;color: red;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+      {% else %}
+      {% endif %}
+      
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+      <i class="material-icons"><ion-icon name="download-outline" style="width: 25px;height: 25px;color: blue;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+        <i class="material-icons"><ion-icon name="alert-circle" style="width: 25px;height: 25px;color: blue;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+        <i class="material-icons"><ion-icon name="search" style="width: 25px;height: 25px;color: blue;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+        <i class="material-icons"><ion-icon name="call" style="width: 25px;height: 25px;color: green;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+        <i class="material-icons"></i>
+      <button class="tbButton otherOptions">
+      <i class="material-icons"><ion-icon name="videocam" style="width: 25px;height: 25px;color: blue;"></ion-icon></i>
+      </button>
+      {% else %}
+      {% endif %}
+        {% if chat %}
+          <i class="material-icons"></i>
+        <button class="tbButton otherOptions">
+        <i class="material-icons"><ion-icon name="ellipsis-vertical" style="width: 25px;height: 25px;color: black;"></ion-icon></i>
+        </button>
+        {% else %}
+        {% endif %}
+      </div>
+      {% if chat %}
+      <button class="go-back">
+        <a href="{% url 'home' %}"><ion-icon name="arrow-back-circle-outline" style="height: 50px;width: 50px;color: black;"></ion-icon></a>
+      </button>
+      {% else %}
+      {% endif %}
+      {% if chat %}
+      <div class="leftSide">
+      <h3 class="chatName">{{chat.name}}<span></span></h3>
+      <p class="chatStatus">{{chat.members.count}} members</p>
+      </div>
+      {% else %}
+      {% endif %}
+    </div>
+    <div class="convHistory userBg">
+      <!-- CONVERSATION GOES HERE! -->
+      {% for j in chat.chat_messages.all %}
+        {% if j.user == request.user %} 
+
+          <div class="msg messageSent">
+          <span>{{j.user.username}}</span>
+          <br><hr>
+            <p>{{j.sms}}</p>
+            
+            <span class="timestamp">{{j.created}}</span>
+            <span class="timestamp">
+              {% if j.is_read %}
+              <ion-icon name="checkmark-done-circle" style="width: 20px;height: 20px; margin-right: -20px;"></ion-icon>
+              {% else %}
+              <ion-icon name="checkmark-circle" style="width: 20px;height: 20px; margin-right: -20px;"></ion-icon>
+              {% endif %}
+            </span>
+          </div>
+        {% else %} 
+
+          <div class="msg messageReceived">
+            <span class="user">{{j.user.username}}</span>
+            <br><hr>
+            <p>{{j.sms}}</p>
+            <span class="timestamp">{{j.created}}</span>
+          </div>
+          {% endif %}
+    {% endfor %}
+    </div>
+    <div class="replyBar">
+      {% if chat.Admin == request.user in chat.Admins.all or request.user in chat.members.all %}
+      {% if chat.tur == "channel"  %}
+
+      <form action="" method="post">
+          <button class="attach" type="button">
+                <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="happy-outline"></ion-icon></i>
+              </button>
+              {% csrf_token %}
+            <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
+            <input type="hidden" name="id" value="{{chat.id}}">
+          <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;"></ion-icon></i></button> 
+      </form>
+      {% else%}
+        <form action="" method="post">
+          <button class="attach" type="button">
+              <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="happy-outline"></ion-icon></i>
+              </button>
+              {% csrf_token %}
+            <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
+            <input type="hidden" name="id" value="{{chat.id}}">
+          <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;"></ion-icon></i></button> 
+        </form>
+      {% endif %}
+      <!-- {% if chat.tur == "channel" %} -->
+      <style>
+        h1{
+          color: blue;
+          font-size: 45px;
+        }
+      </style>
+      <script>
+        function doSomething(){
+            document.getElementById("greeting").innerHTML = "UNMUTE";
+        }
+      </script>
+          <center><button  type="button" onclick="doSomething()"><p id="greeting" style="font-size: 3.1em; color: rgb(0, 0, 255);">MUTE</p></button></center>
+          <center><button style="font-size:40px; background-color:grey; color:lightblue; border-radius:25px;"></button></center>
+      {% endif %}
+    {% else %}
+    <center>
+      {% if chat %}
+      <form action="" method="post">
+        {% csrf_token %}
+          <input type="hidden" value="{{chat.id}}" name="azo">
+          <button style="font-size: 40px; color: rgb(0, 0, 255);" type="submit">JOIN</button>
+      </form>
+      {% else %}
+      {% endif %}
+    </center>
+    {% endif %}
+  </div>
+</section>
+<!-- ---------------------- -->
+<!-- MENU AND OVERLAY STUFF -->
+<!-- ---------------------- -->
+<!-- MENU -->
+<section class="menuWrap">
+    <div class="menu">
+      <div class="me userBg">
+        <div class="image"></div>
+        
+        <div class="myinfo">
+        <p class="name">Random Name</p>
+        <p class="phone">+998 93 932 37 78</p>
+        </div>
+        
+        <button class="cloud">
+          <i class="material-icons">bookmark</i>
+        </button>
+        
+        <button class="settings">
+          <i class="material-icons">settings</i>
+        </button>
+      </div>
+      <nav>
+        <button class="ng">
+          <i class="material-icons">&#xE8D3;</i>
+          
+          <span>New Group</span>
+        </button>
+        
+        <button class="nc">
+          <i class="material-icons">&#xE0B6;</i>
+          
+          <span>New Channel</span>
+        </button>
+        
+        <button class="cn">
+          <i class="material-icons">&#xE851;</i>
+          
+          <span>Contacts</span>
+        </button>
+        
+        <button class="cl">
+          <i class="material-icons">&#xE0B0;</i>
+          
+          <span>Calls History</span>
+        </button>
+        
+        <a href="https://telegram.org/faq" target="_blank">
+        <button class="faq">
+          <i class="material-icons">&#xE000;</i>
+          
+          <span>FAQ and Support</span>
+        </button>
+        </a>
+        
+        <button class="lo">
+          <i class="material-icons">&#xE879;</i>
+          
+          <span>Logout</span>
+        </button>
+      </nav>
+      
+      <div class="info">
+      <p>Telegram Web</p>
+      <p>Ver 0.0.2 - <a href="https://en.wikipedia.org/wiki/Telegram_(messaging_service)">About</a></p>
+      <p>Layout coded by: <a href="https://www.github.com/mayrinck">Mayrinck</a></p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONVERSATION OPTIONS MENU -->
+  <div class="moreMenu">
+    <button class="option about">See Info</button>
+    <button class="option notify">Disable Notifications</button>
+    <button class="option block">Block User</button>
+  </div>
+  
+  <!-- MOBILE OVERLAY -->
+  <section class="switchMobile">
+    <p class="title">Mobile Device Detected</p>
+    
+    <p class="desc">Switch to the mobile app for a better performance.</p>
+    
+    <a href="https://play.google.com/store/apps/details?id=org.telegram.messenger&hl=pt_BR&gl=US">
+      <button class="okay">OK</button>
+    </a>
+  </section>
+  
+  <!-- PROFILE OPTIONS OVERLAY -->
+  <section class="config">
+    <section class="configSect">
+      <div class="profile">
+      <p class="confTitle">Settings</p>
+      
+      <div class="image"></div>
+      
+      <div class="side">
+      <p class="name">Random Name</p>
+      <p class="pStatus">Online</p>
+      </div>
+        
+      <button class="changePic">Change Profile Picture</button>
+      <button class="edit">Edit Profile Info</button>
+    </div>
+    </section>
+    
+    <section class="configSect second">
+      
+      <!-- PROFILE INFO SECTION -->
+      <p class="confTitle">Your Info</p>
+      
+      <div class="information">
+        <ul>
+          <li>Phone Number: <span class="blue phone">+1 12 1234 5678</span></li>
+          <li>Username: <span class="blue username">@USERNAME</span></li>
+          <li>Profile: <span class="blue">https://t.me/USERNAME</span></li>
+        </ul>
+      </div>
+      
+      <!-- NOTIFICATIONS SECTION -->
+      <p class="confTitle">Notifications</p>
+      
+      <div class="optionWrapper deskNotif">
+        <input type="checkbox" id="deskNotif" class="toggleTracer" checked>
+  
+        <label class="check deskNotif" for="deskNotif">
+          <div class="tracer"></div>
+        </label>
+        <p>Enable Desktop Notifications</p>
+      </div>
+      
+      <div class="optionWrapper showSName">
+        <input type="checkbox" id="showSName" class="toggleTracer">
+  
+        <label class="check" for="showSName">
+          <div class="tracer"></div>
+        </label>
+        <p>Show Sender Name</p>
+      </div>
+      
+      <div class="optionWrapper showPreview">
+        <input type="checkbox" id="showPreview" class="toggleTracer">
+  
+        <label class="check" for="showPreview">
+          <div class="tracer"></div>
+        </label>
+        <p>Show Message Preview</p>
+      </div>
+      
+      <div class="optionWrapper playSounds">
+        <input type="checkbox" id="playSounds" class="toggleTracer">
+        <label class="check" for="playSounds">
+            <div class="tracer"></div>
+          </label>
+          <p>Play Sounds</p>
+        </div>
+        
+        
+        <p class="confTitle">Other Settings</p>
+        
+          <div class="optionWrapper">
+            <input type="checkbox" id="checkNight" class="toggleTracer">
+            
+            <label class="check DarkThemeTrigger" for="checkNight">
+              <div class="tracer"></div>
+            </label>
+            <p>Dark Theme</p>
+          </div>
+        
+      </section>
+    </section>
+    
+    <!-- DARK FRAME OVERLAY -->
+    <section class="overlay"></section>
+    
+    <!-- -------------------------------- -->
+    <!-- SPECIFIC FOR CONNECTION WARNINGS -->
+    <!-- -------------------------------- -->
+    <div class="alerts">
+      Trying to reconnect... 
+    </div>
+      <script src="{% static 'j.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    </body>
+    </html>

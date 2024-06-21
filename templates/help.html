@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Page</title>
+    <link rel="shortcut icon" href="https://icons.veryicon.com/png/o/miscellaneous/flat-icon/help-252.png">
+</head>
+<center>
+<body>
+    <style>
+        body{
+            background-color: #90beec;
+        }
+        #id{
+                color: black;
+                font-size: 2em;
+        }
+        #id1{
+                color: blue;
+                font-size: 2em;
+        }
+        #use1{
+                color: rgb(205,73,50);
+                font-size: 2em;
+        }
+        #use2{
+                color: rgb(205,73,50);
+                font-size: 2em;
+        }
+        #use3{
+                color: rgb(205,73,50);
+                font-size: 2em;
+        }
+        #use4{
+                color: rgb(205,73,50);
+                font-size: 2em;
+        }
+        #use5{
+                color: rgb(205,73,50);
+                font-size: 2em;
+        }
+        #use6{
+                color: black;
+        }
+       </style>
+    <center style=" margin-top: 100px; ">
+        <h1 id="id">Explanation to access the site</h1>
+        <br><br><br><br>
+    <h1 id="id1">We will help you to access the site</h1>
+    </center>
+<br><br>
+<br><br>
+<br><br>
+<center>
+<div  class="container">
+<br><br>
+{% if request.user.is_authenticated %}
+        <h2 id="use2">1.Click Create Channel to create channel</h2>   
+<br><br>        
+        <h2 id="use3">2.Click Create Profile to create profile</h2>
+<br><br>        
+        <h2 id="use4">3.Click Create Group to create group</h2>
+<br><br>
+        <h2 id="use5">4.Click User_Edit  to edit your options</h2>
+        {% else %}
+        <h2 id="use1">Click Login to login or register to our website</h2>
+        {% endif %}
+<br><br>
+<br><br>
+<br><br>
+        <h1 id="use6">Then you can visit the site by logging in</h1>
+</center>     
+</div> 
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</center>
+</body>
+</html>
