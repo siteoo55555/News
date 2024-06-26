@@ -37,9 +37,14 @@ class User(AbstractUser):
         ('1992', '1992'),
         ('1991', '1991'),
         ('1990', '1990'),
+        ('1989', '1989'),
+        ('1988', '1988'),
+        ('1987', '1987'),
+        ('1986', '1986'),
+        ('1985', '1985'),
     )
     COUNTRY = (
-        ('country', 'Country'),
+        ('Uzbekistan','Uzbekistan'),
         ('afghanistan', 'Afghanistan'),
         ('albania', 'Albania'),
         ('algeria', 'Algeria'),
@@ -251,11 +256,11 @@ class User(AbstractUser):
 
     )
     gender=models.CharField(max_length=10,choices=GENDER,default='male')
-    country = models.CharField(max_length=35, choices=COUNTRY,default='Country')
+    country = models.CharField(max_length=35, choices=COUNTRY,default='Uzbekistan')
     age = models.CharField(max_length=6, choices=AGE,default='2010')
     active=models.BooleanField(default=False)
     email = models.EmailField(max_length=50)
-    phone_number=models.IntegerField(default='998905414781')
+    phone_number=models.IntegerField(default='+998')
 
 class Confirmation(models.Model):
     code=models.IntegerField(null=True)
@@ -270,7 +275,7 @@ class Confirmation(models.Model):
 
     def __str__(self) -> str:
         return f'{self.user.username}-{self.code}'
-    
+
     def is_expired(self):
         return self.expired_time < timezone.now()
 
@@ -291,7 +296,7 @@ def create_confirmation_code(sender, instance, created, **kwargs):
 class Chat(models.Model):
     TUR = (
         ('channel', 'CHANNEL'),
-        ('group', 'GROUP'), 
+        ('group', 'GROUP'),
         ('chatting', 'CHATTING'),
     )
     description = models.TextField(default='Input Description')
@@ -307,12 +312,13 @@ class Chat(models.Model):
     def unread_sms(self):
         soni = self.messages.filter(is_read=False).count()
         return soni
-    
+
 class Chat_Link(models.Model):
     chat=models.OneToOneField(Chat,on_delete=models.CASCADE,related_name='chat_url')
     url=models.TextField()
-    
+
 class Profile(models.Model):
+    username = models.CharField(max_length=10)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     birthday = models.CharField(max_length=90,null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=True ,blank=True)

@@ -10,8 +10,7 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields =['phone_number','bio','birthday', 'user',]
-
+        fields =['username','phone_number','bio','birthday',]
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo

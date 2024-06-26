@@ -11,8 +11,25 @@ import string
 import random
 
 
+
+def Login(request):
+    form = LoginForm()
+    if request.POST:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            parol = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=parol)
+            if user is not None:
+                login(request, user)
+            return redirect('home')
+    return render(request, 'index.html', {'form': form})
+
+
 class Home(View):
     def get(self, request):
+        if not request.user.is_authenticated:
+            return Login(request)
         chats = Chat.objects.all()
         search = request.GET.get('search')
         chat = None
@@ -40,7 +57,7 @@ class Home(View):
             print('-------------')
 
         return render(request, 'home.html',{'chats':chats,'chat':chat, 'sms_obj': sms_obj})
-    
+
     def post(self, request):
         if request.user.is_authenticated:
             sms = request.POST.get('sms')
@@ -54,7 +71,7 @@ class Home(View):
                         user = request.user,
                         chat = Chat.objects.get(id=int(chat_id))
                     )
-                return redirect(reverse('home') + f'?id={chat_id}')    
+                return redirect(reverse('home') + f'?id={chat_id}')
             azo = request.POST.get('azo')
             if azo:
                 chat = Chat.objects.get(id=azo)
@@ -99,14 +116,14 @@ class Confirm(View):
     def get(self, request):
         return render(request, 'confirm.html')
     def post(self, request):
-        code = request.POST.get('code', 0)    
+        code = request.POST.get('code', 0)
         if code:
             a=request.user.user_codes.last()
             if a.code == int(code) and a.expired_time>=timezone.now():
                 request.user.active=True
                 request.user.save()
                 messages.success(request, 'Siz tasdiqlandingiz  !')
-                
+
                 return redirect('home')
             else:
                 messages.info(request, 'Sizda xato kod bor :)')
@@ -166,19 +183,6 @@ class Create_Channel(View):
             return redirect('add', group.id)
 
 
-def Login(request):
-    form = LoginForm()
-    if request.POST:
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            parol = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=parol)
-            if user is not None:
-                login(request, user)
-            return redirect('home')
-    return render(request, 'index.html', {'form': form})
-
 def help(request):
     ...
     return render(request, 'help.html')
@@ -233,6 +237,16 @@ def quiz(request):
     ...
     return render(request, 'quest.html')
 
+
+def typing_test(request):
+    ...
+    return render(request, 'typing.html')
+
+
+def tic_tac_toe(request):
+    ...
+    return render(request, 'tic.html')
+
 def flappy_bird(request):
     ...
     return render(request, 'stack.html')
@@ -240,6 +254,14 @@ def flappy_bird(request):
 def memory(request):
     ...
     return render(request, 'memory.html')
+
+def pinball(request):
+    ...
+    return render(request, 'ball.html')
+
+def mouse_tap(request):
+    ...
+    return render(request, 'tap.html')
 
 def snake(request):
     ...
@@ -254,7 +276,7 @@ class Create_Profile(View):
         if form.is_valid():
             form.save()
         return redirect('home')
-        
+
 
 
 def profile_image_create(request):
@@ -280,7 +302,7 @@ def profile_image_delete(request,id):
 
 class Create_Friend_Chat(View):
     def get(self, request):
-        users=User.objects.all() 
+        users=User.objects.all()
         return render(request,'friend.html',{'users':users})
     def post(self, request):
         form=Create_Friend_ChatForm(request.POST,files=request.FILES)
@@ -354,7 +376,7 @@ def delete(request, me):
 # def create_chat_f(request):
 #     users=User.objects.all()
 #     if request.GET:
-#         user=User.objects.get(id = id) 
+#         user=User.objects.get(id = id)
 #         if request.POST:
 #             form=Create_Friend_ChatForm(request.POST,files=request.FILES)
 #             if form.is_valid():
@@ -497,7 +519,7 @@ def delete(request, me):
 #             chat = Chat.objects.get(id=int(chat_id))
 #         )
 #     return render(request, 'home.html', {'chats': chats, 'chat': chat})
-    
+
 
 
 
@@ -506,14 +528,14 @@ def delete(request, me):
 
 # def confirm(request):
 #     if request.POST:
-#         code = request.POST.get('code', 0)    
+#         code = request.POST.get('code', 0)
 #         if code:
 #             a=request.user.user_codes.last()
 #             if a.code == int(code) and a.expired_time>=timezone.now():
 #                 request.user.active=True
 #                 request.user.save()
 #                 messages.success(request, 'Siz tasdiqlandingiz  !')
-                
+
 #                 return redirect('home')
 #             messages.warning(request, 'Sizda xato kod bor :)')
 #     return render(request, 'confirm.html')

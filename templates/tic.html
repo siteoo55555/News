@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe Game</title>
+       <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/256/771/771242.png?semt=ais_hybrid">
     <style>
         *, *::after, *::before {
       box-sizing: border-box;
@@ -338,10 +339,10 @@ class AI {
                 board[moveSimulation] = EMPTY;
             }
         }
-        
-        // Take one random move if several moves with the same score are available. 
+
+        // Take one random move if several moves with the same score are available.
         if(randomizedMoves.length){
-            
+
             // First AI move
             if(randomizedMoves.length === board.length){
                 bestMove = randomizedMoves[Math.floor(Math.random() * randomizedMoves.length)];
@@ -458,7 +459,7 @@ class AIPlayer {
 
     constructor(difficulty = 2) {
         this.difficulty = difficulty;
-        this.name = `${this._getRandomName()}(AI)`;
+        this.name = `${this._getRandomName()}`;
         this.win = 0;
     }
 
@@ -467,11 +468,11 @@ class AIPlayer {
     }
 
     setBoard() {
-        this.ai = new AI(1);
+        this.ai = new AI(4);
     }
 
     play() {
-        $message.textContent = `${this.name}'s turn`;
+        $message.textContent = `${this.name}'s turn!`;
         return new Promise((res) => {
             let randomTimer = Math.floor(Math.random() * 1000 + 500);
             let move = this.ai.findBestMove();
@@ -480,8 +481,8 @@ class AIPlayer {
     }
 }
 
-AIPlayer.names = ['Leanne', 'Ervin', 'Clementine', 'Patricia', 'Chelsey', 'Dennis', 'Kurtis',
-    'Nicholas', 'Alphonse', 'Marie', 'Edouard', 'Lucille', 'Julie', 'Bernard'
+AIPlayer.names = ['Sam', 'Jenny', 'George', 'Rose', 'Laura', 'Bahtiyor', 'Abdulaziz',
+    'Rohmatulloh', 'Muhammad Olim', 'Doniyor', 'Akbarshox', 'Osimhon', 'Javohir', 'Xabibullo'
 ];
 
 let player = null;
@@ -632,7 +633,7 @@ function dice() {
     document.body.classList.remove('playing');
 
     setTimeout(() => {
-        $playBtn.textContent = 'Click to throw the dice';
+        $playBtn.textContent = 'Next';
         $playBtn.classList.remove('hide');
     }, 500);
 
@@ -642,14 +643,14 @@ function dice() {
 
         $playBtn.classList.add('hide');
 
-        $diceRoll.querySelector('.dice-rolling').textContent = 'The dices are rolling!';
+        $diceRoll.querySelector('.dice-rolling').textContent = 'The Game is preparing!';
 
         let scoreA = Math.floor(Math.random() * 5) + 1;
-        let scoreB = Math.floor(Math.random() * 3) + 1; // Yes...cheating here, so player has more chance to start... :) 
+        let scoreB = Math.floor(Math.random() * 3) + 1; // Yes...cheating here, so player has more chance to start... :)
 
         while (scoreA === scoreB) {
             scoreA = Math.floor(Math.random() * 5) + 1;
-            scoreB = Math.floor(Math.random() * 3) + 1; 
+            scoreB = Math.floor(Math.random() * 3) + 1;
         }
 
         startingPlayer = scoreA > scoreB ? player : opponent;
@@ -692,7 +693,7 @@ function playerSetup() {
     opponent.symbol = OPPONENT;
     opponent.setBoard(board);
 
-    $diceRoll.querySelector('.opponent').textContent = `You are playing against ${opponent.name}`;
+    $diceRoll.querySelector('.opponent').textContent = `You are playing against with ${opponent.name}!`;
 
     dice();
 }
@@ -720,7 +721,7 @@ function playingState() {
 function endState(winner) {
     removeEvents();
 
-    $message.textContent = `${winner.name} wins the game!`;
+    $message.textContent = `${winner.name} win the game!`;
     document.body.classList.remove('playing');
 
     $playBtn.classList.remove('hide');
