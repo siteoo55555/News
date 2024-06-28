@@ -91,10 +91,10 @@ def delete_sms(request,id,message_id):
 def register(request):
     r = UserForm()
     if request.POST:
-        register = UserForm(request.POST)
-        if register.is_valid():
-            user = register.save()
-            parol = register.cleaned_data['password']
+        r = UserForm(request.POST)
+        if r.is_valid():
+            user = r.save()
+            parol = r.cleaned_data['password']
             user.set_password(parol)
             user.save()
             return redirect('home')
