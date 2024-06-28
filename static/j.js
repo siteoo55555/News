@@ -59,6 +59,3 @@ $(".convHistory, .replyMessage").click(function(){
     $(".emojiBar").fadeOut(120);
 });
 });
-
-
-

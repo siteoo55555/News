@@ -331,7 +331,7 @@ class Profile(models.Model):
 def create(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(
-            user=sender,
+            user=instance,
         )
 class Photo(models.Model):
     image=models.ImageField(upload_to='telegram/user/',  null=True, blank=True)

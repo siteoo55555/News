@@ -9,4 +9,3 @@ admin.site.register(Photo)
 admin.site.register(Messages)
 admin.site.register(Profile)
 admin.site.register(Chat_Link)
-# Register your models here.
