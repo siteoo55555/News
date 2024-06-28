@@ -4,7 +4,7 @@ from .models import *
 class UserForm(forms.ModelForm):
     class Meta:
         model= User
-        fields =['username', 'password', 'email', 'phone_number','country','gender','age',]
+        fields =['username', 'address', 'password', 'email', 'phone_number','country','gender','age',]
 
 
 class ProfileForm(forms.ModelForm):

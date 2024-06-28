@@ -257,6 +257,7 @@ class User(AbstractUser):
     )
     gender=models.CharField(max_length=10,choices=GENDER,default='male')
     country = models.CharField(max_length=35, choices=COUNTRY,default='Uzbekistan')
+    address = models.CharField(max_length=128)
     age = models.CharField(max_length=6, choices=AGE,default='2010')
     active=models.BooleanField(default=False)
     email = models.EmailField(max_length=50)
@@ -273,7 +274,7 @@ class Confirmation(models.Model):
     )
     status=models.CharField(max_length=20, choices=STATUS, default="amalda")
 
-    def __str__(self) -> str:
+    def str(self) -> str:
         return f'{self.user.username}-{self.code}'
 
     def is_expired(self):
@@ -317,6 +318,8 @@ class Chat_Link(models.Model):
     chat=models.OneToOneField(Chat,on_delete=models.CASCADE,related_name='chat_url')
     url=models.TextField()
 
+
+
 class Profile(models.Model):
     username = models.CharField(max_length=10)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
@@ -324,6 +327,12 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=20, null=True ,blank=True)
     bio = models.CharField(max_length=250, null=True, blank=True)
 
+@receiver(post_save,sender=User)
+def create(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(
+            user=sender,
+        )
 class Photo(models.Model):
     image=models.ImageField(upload_to='telegram/user/',  null=True, blank=True)
     profile=models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_images')

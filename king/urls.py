@@ -28,7 +28,6 @@ urlpatterns = [
     path('memory_game/', memory, name='memory_game'),
     path('tic_tac_toe/', tic_tac_toe, name='tic'),
     path('mouse_tap/', mouse_tap, name='mouse'),
-    path('speed_typing/', typing_test, name='typing'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

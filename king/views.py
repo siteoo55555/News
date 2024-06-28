@@ -111,7 +111,6 @@ def register(request):
 #             login(request, a)
 #             return redirect('home')
 #         return render(request, 'user.html', {'r': r})
-
 class Confirm(View):
     def get(self, request):
         return render(request, 'confirm.html')
@@ -236,8 +235,6 @@ def calculator(request):
 def quiz(request):
     ...
     return render(request, 'quest.html')
-
-
 def typing_test(request):
     ...
     return render(request, 'typing.html')
@@ -388,7 +385,6 @@ def delete(request, me):
 #                 chat.save()
 #                 return redirect('home')
 #         return render(request,'friend.html',{'users':users})
-
 # class Users(View):
 #     def get(self, request):
 #         r = UserForm()
@@ -525,7 +521,6 @@ def delete(request, me):
 
 
 # old function
-
 # def confirm(request):
 #     if request.POST:
 #         code = request.POST.get('code', 0)
@@ -539,4 +534,3 @@ def delete(request, me):
 #                 return redirect('home')
 #             messages.warning(request, 'Sizda xato kod bor :)')
 #     return render(request, 'confirm.html')
-
