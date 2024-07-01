@@ -181,6 +181,9 @@ class Create_Channel(View):
             group.save()
             return redirect('add', group.id)
 
+def dino(request):
+    ...
+    return render(request, 'dino.html')
 
 def help(request):
     ...
