@@ -261,7 +261,7 @@ class User(AbstractUser):
     age = models.CharField(max_length=6, choices=AGE,default='2010')
     active=models.BooleanField(default=False)
     email = models.EmailField(max_length=50)
-    phone_number=models.IntegerField(default='+998')
+    phone_number=models.PositiveIntegerField(default='+998')
 
 class Confirmation(models.Model):
     code=models.IntegerField(null=True)
