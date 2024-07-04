@@ -348,6 +348,7 @@ class Messages(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='chat_messages')
     created = models.TimeField(auto_now_add=True)
     photo=models.ImageField(upload_to='images/', null=True, blank=True)
+    likes = models.ManyToManyField(User, related_name='likes')
     updated = models.DateTimeField(auto_now=True)
     is_read=models.BooleanField(default=False,null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='user_messages')

@@ -23,7 +23,7 @@ def Login(request):
             if user is not None:
                 login(request, user)
             return redirect('home')
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 class Home(View):
@@ -62,6 +62,7 @@ class Home(View):
         if request.user.is_authenticated:
             sms = request.POST.get('sms')
             chat_id = request.POST.get('id')
+            
             if chat_id:
                 if request.POST.get('message_id'):
                     pass
@@ -266,6 +267,10 @@ def mouse_tap(request):
 def snake(request):
     ...
     return render(request, 'snake.html')
+
+def chatbot(request):
+    ...
+    return render(request, 'index.html')
 
 class Create_Profile(View):
     def get(self, request):
