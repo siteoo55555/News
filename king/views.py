@@ -60,6 +60,12 @@ class Home(View):
 
     def post(self, request):
         if request.user.is_authenticated:
+            news_id = request.POST['one']
+            one_news = Messages.objects.get(id=news_id)
+            if request.user in one_news.likes.all():
+                one_news.likes.remove(request.user)
+            else:
+                one_news.likes.add(request.user)    
             sms = request.POST.get('sms')
             chat_id = request.POST.get('id')
             
@@ -271,6 +277,10 @@ def snake(request):
 def chatbot(request):
     ...
     return render(request, 'index.html')
+
+def translator(request):
+    ...
+    return render(request, 'translate.html')
 
 class Create_Profile(View):
     def get(self, request):

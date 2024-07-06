@@ -16,7 +16,7 @@
     <button type="button" class="btn btn-outline-primary"><a href="{% url 'create_profile' %}">Create_Profile</a></button>
     {% else %}
     <button type="submit"><a href="{% url 'dino_game' %}">Dino Game</a></button>
-    <button type="submit"><a href="{% url 'chat_bot' %}">Chatbot</a></button>
+    <button type="submit"><a href="{% url 'translator' %}">Translator</a></button>
     <button type="submit"><a href="{% url 'calculator' %}">Calculator</a></button>
     <button type="submit"><a href="{% url 'memory_game' %}">Memory Game</a></button>
     <button type="submit"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
@@ -174,6 +174,12 @@
 
           <div class="msg messageSent">
           <span>{{j.user.username}}</span>  
+          <br>
+          <form action="" method="post">   
+            {% csrf_token %}
+            <input type="hidden" name="one" value="{{i.id}}">
+            <button><i class="fa-solid fa-heart">   {{i.likes.count}}</i></button>
+        </form>
           <br><hr>
             <p>{{j.sms}}</p>
 
