@@ -209,7 +209,7 @@
 
       <form action="" method="post">
           <button class="attach" type="button">
-                <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="happy-outline"></ion-icon></i>
+                <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="-outline"></ion-icon></i>
               </button>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
@@ -219,7 +219,7 @@
       {% else%}
         <form action="" method="post">
           <button class="attach" type="button">
-              <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="happy-outline"></ion-icon></i>
+              <i class="material-icons d45" style="width: 55px;height: 55px;"><i class="fa-light fa-face-smile"></i></i>
               </button>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
@@ -255,5 +255,6 @@
     </center>
     {% endif %}
   </div>
-  <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 </section>
+<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+<body>
