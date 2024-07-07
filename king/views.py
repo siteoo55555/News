@@ -54,18 +54,16 @@ class Home(View):
         sms_obj = None
         if m_id:
             sms_obj = Messages.objects.get(id=m_id)
-            print('-------------')
-
         return render(request, 'home.html',{'chats':chats,'chat':chat, 'sms_obj': sms_obj})
 
     def post(self, request):
         if request.user.is_authenticated:
-            news_id = request.POST['one']
-            one_news = Messages.objects.get(id=news_id)
-            if request.user in one_news.likes.all():
-                one_news.likes.remove(request.user)
+            sms_id = request.POST.get['sms']
+            sms_id = Messages.objects.get(id=sms_id)
+            if request.user in sms_id.likes.all():
+                sms_id.likes.remove(request.user)
             else:
-                one_news.likes.add(request.user)    
+                sms_id.likes.add(request.user)    
             sms = request.POST.get('sms')
             chat_id = request.POST.get('id')
             
@@ -106,18 +104,6 @@ def register(request):
             user.save()
             return redirect('home')
     return render(request, 'user.html', {'r': r})
-
-# def register(request):
-#      r = UserForm()
-#      if request.POST:
-#         r = UserForm(request.POST)
-#         if r.is_valid():
-#             a = r.save(commit=False)
-#             a.set_password(r.cleaned_data['password'])
-#             a.save()
-#             login(request, a)
-#             return redirect('home')
-#         return render(request, 'user.html', {'r': r})
 class Confirm(View):
     def get(self, request):
         return render(request, 'confirm.html')
@@ -128,12 +114,14 @@ class Confirm(View):
             if a.code == int(code) and a.expired_time>=timezone.now():
                 request.user.active=True
                 request.user.save()
-                messages.success(request, 'Siz tasdiqlandingiz  !')
+                messages.success(request, s='You are confirmed!👍👌')
 
                 return redirect('home')
             else:
-                messages.info(request, 'Sizda xato kod bor :)')
-
+                messages.info(request, 'There is error code :)😐')
+        else:
+            messages.info(request, 'Your email is invalid!😐')
+        
 class Create_Group(View):
     def get(self, request):
         form = ChatNameForm()
