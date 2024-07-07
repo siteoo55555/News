@@ -176,11 +176,11 @@
           <div class="msg messageSent">
           <span>{{j.user.username}}</span>  
           <br>
-          <form action="" method="post">   
+          <!-- <form action="" method="post">   
             {% csrf_token %}
             <input type="hidden" name="one" value="{{i.id}}">
             <button><i class="fa-solid fa-heart">   {{i.likes.count}}</i></button>
-        </form>
+        </form> -->
           <br><hr>
             <p>{{j.sms}}</p>
 
@@ -215,8 +215,7 @@
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
-            <button type="submit">send</button>
-          <!-- <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;background-color: red;"></ion-icon></i></button> -->
+          <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;background-color: red;"></ion-icon></i></button>
       </form>
       {% else%}
         <form action="" method="post">
