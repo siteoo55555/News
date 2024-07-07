@@ -50,11 +50,7 @@ class Home(View):
             if search:
                 chats=Chat.objects.filter(name__icontains=search)
             chats=chats[::-1]
-        m_id = request.GET.get('message_id')
-        sms_obj = None
-        if m_id:
-            sms_obj = Messages.objects.get(id=m_id)
-        return render(request, 'home.html',{'chats':chats,'chat':chat, 'sms_obj': sms_obj})
+        return render(request, 'home.html',{'chats':chats,'chat':chat})
 
     def post(self, request):
         if request.user.is_authenticated:
