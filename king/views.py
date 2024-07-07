@@ -56,10 +56,13 @@ class Home(View):
         if request.user.is_authenticated:
             sms = request.POST.get('sms')
             chat_id = request.POST.get('id')
-            
+            sms_id = request.POST.get['one']
+            sms_id = Messages.objects.get(id=sms_id)
+            if request.user in sms_id.likes.all():
+                sms_id.likes.remove(request.user)
+            else:
+                sms_id.likes.add(request.user)    
             if chat_id:
-                if request.POST.get('message_id'):
-                    pass
                 if sms:
                     Messages.objects.create(
                         sms = sms,
@@ -67,12 +70,6 @@ class Home(View):
                         chat = Chat.objects.get(id=int(chat_id))
                     )
                 return redirect(reverse('home') + f'?id={chat_id}')
-            sms_id = request.POST.get['one']
-            sms_id = Messages.objects.get(id=sms_id)
-            if request.user in sms_id.likes.all():
-                sms_id.likes.remove(request.user)
-            else:
-                sms_id.likes.add(request.user)    
             azo = request.POST.get('azo')
             if azo:
                 chat = Chat.objects.get(id=azo)

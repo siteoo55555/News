@@ -170,6 +170,7 @@
     <div class="convHistory userBg">
       <!-- CONVERSATION GOES HERE! -->
       {% for j in chat.chat_messages.all %}
+      {% for i in chat.likes.all %}
         {% if j.user == request.user %}
 
           <div class="msg messageSent">
@@ -177,7 +178,7 @@
           <br>
           <form action="" method="post">   
             {% csrf_token %}
-            <input type="hidden" name="one" value="{{j.id}}">
+            <input type="hidden" name="one" value="{{i.id}}">
             <button><i class="fa-solid fa-heart">   {{i.likes.count}}</i></button>
         </form>
           <br><hr>
