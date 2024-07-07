@@ -56,12 +56,6 @@ class Home(View):
         if request.user.is_authenticated:
             sms = request.POST.get('sms')
             chat_id = request.POST.get('id')
-            # sms_id = request.POST.get['one']
-            # sms_id = Messages.objects.get(id=sms_id)
-            # if request.user in sms_id.likes.all():
-            #     sms_id.likes.remove(request.user)
-            # else:
-            #     sms_id.likes.add(request.user)    
             if chat_id:
                 if sms:
                     Messages.objects.create(
@@ -533,3 +527,13 @@ def delete(request, me):
 #                 return redirect('home')
 #             messages.warning(request, 'Sizda xato kod bor :)')
 #     return render(request, 'confirm.html')
+
+
+
+#like
+            # sms_id = request.POST.get['one']
+            # sms_id = Messages.objects.get(id=sms_id)
+            # if request.user in sms_id.likes.all():
+            #     sms_id.likes.remove(request.user)
+            # else:
+            #     sms_id.likes.add(request.user)    
