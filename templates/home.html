@@ -215,7 +215,8 @@
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
-          <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;background-color: red;"></ion-icon></i></button>
+            <button type="submit">send</button>
+          <!-- <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;background-color: red;"></ion-icon></i></button> -->
       </form>
       {% else%}
         <form action="" method="post">
