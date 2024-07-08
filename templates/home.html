@@ -88,7 +88,7 @@
     {% if chat %}
        <i class="material-icons"></i>
        <button class="tbButton otherOptions">
-       <a href="{% url 'delete' chat.id %}"><i class="material-icons"><i class="fa-solid fa-trash" style="width: 15px;height: 15px;color: rgb(255, 0, 0);"></i></i></a>
+       <a href="{% url 'delete' chat.id %}">delete</a>
        </button>
    {% else %}
    {% endif %}
@@ -101,83 +101,6 @@
         </button>
     {% else %}
     {% endif %}
-    {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-door-open"></i></i>
-      </button>
-    {% else %}
-    {% endif %}
-    {% else %}
-    {% endif %}
-    {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-      <i class="material-icons"><i class="fa-solid fa-download"></i></i>
-      </button>
-      {% else %}
-      {% endif %}
-        {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-triangle-exclamation"></i></i>
-      </butto15
-      {% else %}
-      {% endif %}
-        {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-magnifying-glass"></i></i>
-      </button>
-      {% else %}
-      {% endif %}
-        {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-phone"></i></i>
-      </button>
-      {% else %}
-      {% endif %}
-        {% if chat %}
-        <i class="material-icons"></i>
-      <button class="tbButton otherOptions">
-      <i class="material-icons"><i class="fa-solid fa-video"></i></i>
-      </button>
-      {% else %}
-      {% endif %}
-        {% if chat %}
-          <i class="material-icons"></i>
-          <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-        <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-ellipsis-vertical"></i></i>
-        </button>
-        {% else %}  
-        {% endif %}
-      </div>
       {% if chat %}
       <button class="go-back">
         <a href="{% url 'home' %}"><i class="fa-solid fa-backward" ></i></a>
