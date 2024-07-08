@@ -70,7 +70,7 @@
     {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
-        <a href="{% url 'add' chat.id %}"><i class="material-icons"><ion-icon name="fa-solid fa-user-plus" style="width: 1px;height: 1px;color: rgb(0, 0, 255);"></ion-icon></i></a>
+        <a href="{% url 'add' chat.id %}"><i class="material-icons"><ion-icon name="fa-solid fa-user-plus" style="width: 15px;height: 15px;color: rgb(0, 0, 255);"></ion-icon></i></a>
         </button>
      {% else %}
      {% endif %}
@@ -78,7 +78,7 @@
      {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
-        <a href="{% url 'remove' chat.id %}"><i class="material-icons"><i class="fa-solid fa-user-minus" style="width: 1px;height: 1px;color: rgb(255, 0, 0);"></i></i></a>
+        <a href="{% url 'remove' chat.id %}"><i class="material-icons"><i class="fa-solid fa-user-minus" style="width: 15px;height: 15px;color: rgb(255, 0, 0);"></i></i></a>
         </button>
     {% else %}
     {% endif %}
@@ -88,7 +88,7 @@
     {% if chat %}
        <i class="material-icons"></i>
        <button class="tbButton otherOptions">
-       <a href="{% url 'delete' chat.id %}"><i class="material-icons"><i class="fa-solid fa-trash" style="width: 1px;height: 1px;color: rgb(255, 0, 0);"></i></i></a>
+       <a href="{% url 'delete' chat.id %}"><i class="material-icons"><i class="fa-solid fa-trash" style="width: 15px;height: 15px;color: rgb(255, 0, 0);"></i></i></a>
        </button>
    {% else %}
    {% endif %}
@@ -97,14 +97,14 @@
     {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
-        <a href="{% url 'edit' chat.id %}"><i class="material-icons"><i  style="width: 1px;height: 1px;color: orange;" class="fa-solid fa-pen"></i></i></a>
+        <a href="{% url 'edit' chat.id %}"><i class="material-icons"><i  style="width: 15px;height: 15px;color: orange;" class="fa-solid fa-pen"></i></i></a>
         </button>
     {% else %}
     {% endif %}
     {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-door-open" style="width: 1px;height: 1px;color: red;"></i></i>
+        <i class="material-icons"><i class="fa-solid fa-door-open"></i></i>
       </button>
     {% else %}
     {% endif %}
@@ -113,49 +113,49 @@
     {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-      <i class="material-icons"><i class="fa-solid fa-download" style="width: 1px;height: 1px;color: blue;"></i></i>
+      <i class="material-icons"><i class="fa-solid fa-download"></i></i>
       </button>
       {% else %}
       {% endif %}
         {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-triangle-exclamation" style="width: 1px;height: 1px;color: blue;"></i></i>
+        <i class="material-icons"><i class="fa-solid fa-triangle-exclamation"></i></i>
       </butto15
       {% else %}
       {% endif %}
         {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-magnifying-glass" style="width: 1px;height1px;color: blue;"></i></i>
+        <i class="material-icons"><i class="fa-solid fa-magnifying-glass"></i></i>
       </button>
       {% else %}
       {% endif %}
         {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-phone" style="width: 1px;height: 1px;color: green;"></i></i>
+        <i class="material-icons"><i class="fa-solid fa-phone"></i></i>
       </button>
       {% else %}
       {% endif %}
         {% if chat %}
         <i class="material-icons"></i>
       <button class="tbButton otherOptions">
-      <i class="material-icons"><i class="fa-solid fa-video" style="width: 9.1px;height: 9.1px;color: blue;"></i></i>
+      <i class="material-icons"><i class="fa-solid fa-video"></i></i>
       </button>
       {% else %}
       {% endif %}
         {% if chat %}
           <i class="material-icons"></i>
         <button class="tbButton otherOptions">
-        <i class="material-icons"><i class="fa-solid fa-ellipsis-vertical" style="width: 9.1px;height: 9.1px;color: black;"></i></i>
+        <i class="material-icons"><i class="fa-solid fa-ellipsis-vertical"></i></i>
         </button>
         {% else %}  
         {% endif %}
       </div>
       {% if chat %}
       <button class="go-back">
-        <a href="{% url 'home' %}"><i class="fa-solid fa-backward" style="height:9.1px;width: 9.1px;color: black;"></i></a>
+        <a href="{% url 'home' %}"><i class="fa-solid fa-backward" ></i></a>
       </button>
       {% else %}
       {% endif %}
