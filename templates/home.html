@@ -170,7 +170,7 @@
     <div class="convHistory userBg">
       <!-- CONVERSATION GOES HERE! -->
       {% for j in chat.chat_messages.all %}
-      {% for i in chat.likes.all %}
+      <!-- {% for i in chat.likes.all %} -->
         {% if j.user == request.user %}
 
           <div class="msg messageSent">
