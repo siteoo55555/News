@@ -119,13 +119,7 @@
         {% if j.user == request.user %}
 
           <div class="msg messageSent">
-          <span>{{j.user.username}}</span>  
-          <!-- <form action="" method="post">   
-            {% csrf_token %}
-            <input type="hidden" name="one" value="{{i.id}}">
-            <button><i class="fa-solid fa-heart">   {{i.likes.count}}</i></button>
-            <br><hr>
-          </form> --> 
+          <span>{{j.user.username}}</span>
           <hr>
             <p>{{j.sms}}</p>
 
@@ -161,9 +155,6 @@
       </form>
       {% else %}
         <form action="" method="post">
-          <button class="attach" type="button">
-              <i class="material-icons d45" style="width: 55px;height: 55px;"><i class="fa-light fa-face-smile"></i></i>
-              </button>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
