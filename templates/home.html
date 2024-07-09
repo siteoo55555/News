@@ -73,7 +73,7 @@
         </button>
      {% else %}
      {% endif %}
-     {% if chat.Admin==request.user %}
+     {% if chat.Admin in request.user %}
      {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
@@ -83,7 +83,7 @@
     {% endif %}
     {% else %}
     {% endif %}
-    {% if chat.Admin==request.user %}
+    {% if chat.Admin in request.user %}
     {% if chat %}
        <i class="material-icons"></i>
        <button class="tbButton otherOptions">
