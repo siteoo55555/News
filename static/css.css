@@ -159,7 +159,6 @@ input[type="checkbox"] {
 .me .image {
 	width: 70px;
 	height: 70px;
-	background: #FFF url(https://thispersondoesnotexist.com/image) no-repeat center;
 	background-size: cover;
 	border-radius: 100%;
 	cursor: pointer;
@@ -290,7 +289,6 @@ nav button > span {
 .profile .image {
 	width: 140px;
 	height: 140px;
-	background: #FFF url(https://thispersondoesnotexist.com/image) no-repeat center;
 	background-size: cover;
 	border-radius: 100%;
 	float: left;
@@ -519,7 +517,6 @@ header {
 	position: absolute;
 	width: 55px;
 	height: 55px;
-	background: #ddd url('https://w7.pngwing.com/pngs/480/819/png-transparent-telegram-icon-telegram-logo-telegram-app-social-icon-messaging-messenger-thumbnail.png') no-repeat center;
 	background-size: cover;
 	border-radius: 100%;
 	margin: 13px 13px;
