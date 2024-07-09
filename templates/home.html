@@ -102,7 +102,9 @@
       {% endif %}
       {% if chat %}
       <div class="leftSide">
-      <h3 class="chatName">{{chat.name}}<span></span></h3>                                  
+      <h3 class="chatName">{{chat.name}}<span></span></h3>
+      <p class="chatStatus">{{chat.members.count}} members</p>
+                                        
       {% if chat %}
           <i class="material-icons"></i>
           <button class="tbButton otherOptions">
@@ -110,7 +112,6 @@
           </button>
       {% else %}
       {% endif %}
-      <p class="chatStatus">{{chat.members.count}} members</p>
       </div>
       {% else %}
       {% endif %}
@@ -162,7 +163,7 @@
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
-          <button type="submit"><i class="material-icons d45"><i class="bi bi-send"></i></i></button>
+          <button type="submit">send</button>
       </form>
       {% else %}
         <form action="" method="post">
