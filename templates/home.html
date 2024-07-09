@@ -96,7 +96,7 @@
     </div>
       {% if chat %}
       <button class="go-back">
-        <a href="{% url 'home' %}"><i class="fa-solid fa-backward" ></i></a>
+        <a href="{% url 'home' %}"><i style="color: black;background-color: white;" class="fa-solid fa-backward" ></i></a>
       </button>
       {% else %}
       {% endif %}
@@ -137,7 +137,7 @@
               {% if j.is_read %}
               <ion-icon class="fa-solid fa-check-double" style="width: 20px;height: 20px; margin-right: -20px;"></i>
               {% else %}
-              <ion-icon class="fa-solid fa-check" style="width: 20px;height: 20px; margin-right: -20px;"></i>
+              <ion-icon class="fa-solid fa-circle-check" style="width: 20px;height: 20px; margin-right: -20px;"></i>
               {% endif %}
             </span>
           </div>
@@ -158,7 +158,7 @@
 
       <form action="" method="post">
           <button class="attach" type="button">
-                <i class="material-icons d45" style="width: 55px;height: 55px;"><ion-icon name="happy-outline"></ion-icon></i>
+                <i class="material-icons d45"><ion-icon name="happy-outline"></ion-icon></i>
               </button>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
@@ -173,7 +173,7 @@
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
-          <button type="submit"><i class="material-icons d45"><ion-icon name="send" style="color: rgb(0, 0, 255);width: 45px;height:44px;background-color: white;"></ion-icon></i></button>
+          <button type="submit"><i class="material-icons d45">send</button>
         </form>
       {% endif %}
       <!-- {% if chat.tur == "channel" %} -->
