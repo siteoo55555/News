@@ -193,8 +193,6 @@
           <center><button  type="button" onclick="doSomething()"><p id="greeting" style="font-size: 3.1em; color: rgb(0, 0, 255);">MUTE</p></button></center>
           <center><button style="font-size:40px; background-color:grey; color:lightblue; border-radius:25px;"></button></center>
       {% endif %}
-    {% else %}
-    {% endif %}
     <center>
       {% if chat %}
       <form action="" method="post">
@@ -202,7 +200,6 @@
           <input type="hidden" value="{{chat.id}}" name="azo">
           <button style="font-size: 40px; color: rgb(0, 0, 255);" type="submit">JOIN</button>
       </form>
-      {% else %}
       {% endif %}
     </center>
     <!-- {% endif %} -->
