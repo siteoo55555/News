@@ -93,13 +93,6 @@
    {% endif %}
    {% else %}
    {% endif %}
-    {% if chat %}
-        <i class="material-icons"></i>
-        <button class="tbButton otherOptions">
-        <a href="{% url 'edit' chat.id %}"><i class="material-icons"><i  style="width: 15px;height: 15px;color: orange;" class="fa-solid fa-pen"></i></i></a>
-        </button>
-    {% else %}
-    {% endif %}
     </div>
       {% if chat %}
       <button class="go-back">
@@ -109,7 +102,14 @@
       {% endif %}
       {% if chat %}
       <div class="leftSide">
-      <h3 class="chatName">{{chat.name}}<span></span></h3>
+      <h3 class="chatName">{{chat.name}}<span></span></h3>                                  
+      {% if chat %}
+          <i class="material-icons"></i>
+          <button class="tbButton otherOptions">
+          <a href="{% url 'edit' chat.id %}">edit chat</a>
+          </button>
+      {% else %}
+      {% endif %}
       <p class="chatStatus">{{chat.members.count}} members</p>
       </div>
       {% else %}
