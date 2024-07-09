@@ -66,7 +66,6 @@
   <div class="rightPanel">
     <div class="topBar">
       <div class="rightSide">
-    {% if request.user.is_authenticated %}
     {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
@@ -74,7 +73,7 @@
         </button>
      {% else %}
      {% endif %}
-     {% if chat.Admin %}
+     {% if chat.Admin==request.user %}
      {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
@@ -84,11 +83,11 @@
     {% endif %}
     {% else %}
     {% endif %}
-    {% if chat.Admin %}
+    {% if chat.Admin==request.user %}
     {% if chat %}
        <i class="material-icons"></i>
        <button class="tbButton otherOptions">
-       <a href="{% url 'delete' chat.id %}">delete</a>
+       <a href="{% url 'delete' chat.id %}"><i class="material-icons"><i class="fa-solid fa-trash" style="width: 15px;height: 15px;color: rgb(255, 0, 0);"></i></i></a>
        </button>
    {% else %}
    {% endif %}
@@ -101,6 +100,7 @@
         </button>
     {% else %}
     {% endif %}
+    </div>
       {% if chat %}
       <button class="go-back">
         <a href="{% url 'home' %}"><i class="fa-solid fa-backward" ></i></a>
