@@ -50,9 +50,8 @@
               <input type="hidden" value="{{i.id}}" name="id">
               {% if i.photo %}
               <div class="image my-image">
-              <img src="{{i.photo.url}}" alt="photo doesn't exists">
+                {{i.photo.url}}
             </div>
-              {% endif %}
                 <p class="name">
               <button type="submit" style="color: rgb(51, 72, 191);font-size: 13px;">
                   <h2>
