@@ -67,7 +67,7 @@
   <div class="rightPanel">
     <div class="topBar">
       <div class="rightSide">
-     {% if chat.Admin in request.user %}
+     {% if request.user in chat.Admin.all %}
      {% if chat %}
         <i class="material-icons"></i>
         <button class="tbButton otherOptions">
@@ -77,7 +77,7 @@
     {% endif %}
     {% else %}
     {% endif %}
-    {% if chat.Admin in request.user %}
+    {% if request.user in chat.Admin.all %}
     {% if chat %}
        <i class="material-icons"></i>
        <button class="tbButton otherOptions">
@@ -98,7 +98,6 @@
       <div class="leftSide">
       <h3 class="chatName">{{chat.name}}</h3>
       <p class="chatStatus">{{chat.members.count}} members</p>
-                                        
       {% if chat %}
           <i class="material-icons"></i>
           <button class="tbButton otherOptions">
