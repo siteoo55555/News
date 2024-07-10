@@ -158,11 +158,6 @@
       {% if chat.tur == "channel"  %}
 
       <form action="" method="post">
-        <div class="uk-container uk-container-small uk-section">        
-          <div>
-              <button class="second-btn uk-button uk-button-primary" id="men" type="submit"><i class="fa-regular fa-face-smile"></i>
-          </div>
-      </div>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
