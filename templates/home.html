@@ -156,7 +156,6 @@
     <div class="replyBar">
       {% if chat.Admin == request.user in chat.Admins.all or request.user in chat.members.all %}
       {% if chat.tur == "channel"  %}
-
       <form action="" method="post">
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
@@ -165,13 +164,10 @@
       </form>
       {% else %}
         <form action="" method="post">
-          <button class="attach" type="button">
-              <i class="material-icons d45" style="width: 55px;height: 55px;"><i class="fa-light fa-face-smile"></i></i>
-              </button>
               {% csrf_token %}
             <input type="text" class="replyMessage" placeholder="Message" name="sms"/>
             <input type="hidden" name="id" value="{{chat.id}}">
-          <button type="submit"><i class="material-icons d45">send</button>
+          <button type="submit">send</button>
         </form>
       {% endif %}
       <style>
