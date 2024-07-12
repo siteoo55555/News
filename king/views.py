@@ -257,6 +257,9 @@ def translator(request):
     ...
     return render(request, 'translate.html')
 
+def games(request):
+    ...
+    return render(request, 'game.html')
 class Create_Profile(View):
     def get(self, request):
         form = ProfileForm()

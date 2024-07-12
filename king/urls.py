@@ -30,7 +30,8 @@ urlpatterns = [
     path('mouse_tap/', mouse_tap, name='mouse'),
     path('dino/', dino, name='dino_game'),
     path('chatbot/', chatbot, name='chat_bot'),
-    path('translator/', translator, name='translator')
+    path('translator/', translator, name='translator'),
+    path('games/', games, name='games'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

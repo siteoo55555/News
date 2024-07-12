@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Page</title>
+<style>
+    body{
+        background-color: green;
+    }
+    .button{
+        background-color: black;
+        color: white;
+        border-radius: 25px;
+        font-size: large;
+        border-style: ridge;
+        border-width: 10px;
+        border-color: pink;
+    }
+    .button:hover{
+        background-color: white;
+        color: black;
+        border-radius: 25px;
+        font-size: large;
+        border-color: red;
+        border-width: 13.5px;
+    }
+    a{
+        color: white;
+        text-decoration: none;
+        background-color: black;
+    }
+    a:hover{
+        color: black;
+        text-decoration: none;
+        background-color: white;
+    }
+</style>
+</head>
+<body>
+    <center>
+    <h1 style="background-color: red;color: white;">Games Page</h1>
+    <br><br>
+<!-- {% if requst.user.is_authenticated %} -->
+    <button type="submit" class="button"><a href="{% url 'dino_game' %}">Dino Game</a></button>
+    <br><br>
+    <button type="submit" class="button"><a href="{% url 'translator' %}">Translator</a></button>
+    <br><br>
+    <button type="submit" class="button"><a href="{% url 'calculator' %}">Calculator</a></button>
+    <br><br>
+    <button type="submit" class="button"><a href="{% url 'memory_game' %}">Memory Game</a></button>
+<br><br>
+    <button type="submit" class="button"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
+<br><br>
+    <button type="submit" class="button"><a href="{% url 'tic' %}">Tic Tac Toe</a></button>
+<br><br>
+    <button type="submit" class="button"><a href="{% url 'mouse' %}">Tap</a></button>
+<br><br>
+    <button type="submit" class="button"><a href="{% url 'snake' %}">Snake</a></button>
+    <!-- {% else %}
+    {% endif %} -->
+</center>
+</body>
+</html>
