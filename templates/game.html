@@ -41,7 +41,7 @@
     <center>
     <h1 style="background-color: red;color: white;">Games Page</h1>
     <br><br>
-<!-- {% if requst.user.is_authenticated %} -->
+{% if requEst.user.is_authenticated %}
     <button type="submit" class="button"><a href="{% url 'dino_game' %}">Dino Game</a></button>
     <br><br>
     <button type="submit" class="button"><a href="{% url 'translator' %}">Translator</a></button>
@@ -57,8 +57,8 @@
     <button type="submit" class="button"><a href="{% url 'mouse' %}">Tap</a></button>
 <br><br>
     <button type="submit" class="button"><a href="{% url 'snake' %}">Snake</a></button>
-    <!-- {% else %}
-    {% endif %} -->
+    {% else %}
+    {% endif %}
 </center>
 </body>
 </html>
