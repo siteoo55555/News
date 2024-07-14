@@ -43,19 +43,12 @@
     <br><br>
 {% if requEst.user.is_authenticated %}
     <button type="submit" class="button"><a href="{% url 'dino_game' %}">Dino Game</a></button>
-    <br><br>
     <button type="submit" class="button"><a href="{% url 'translator' %}">Translator</a></button>
-    <br><br>
     <button type="submit" class="button"><a href="{% url 'calculator' %}">Calculator</a></button>
-    <br><br>
     <button type="submit" class="button"><a href="{% url 'memory_game' %}">Memory Game</a></button>
-<br><br>
     <button type="submit" class="button"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
-<br><br>
     <button type="submit" class="button"><a href="{% url 'tic' %}">Tic Tac Toe</a></button>
-<br><br>
     <button type="submit" class="button"><a href="{% url 'mouse' %}">Tap</a></button>
-<br><br>
     <button type="submit" class="button"><a href="{% url 'snake' %}">Snake</a></button>
     {% else %}
     {% endif %}
