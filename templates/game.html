@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games Page</title>
+    <link rel="icon" href="https://w7.pngwing.com/pngs/310/298/png-transparent-game-controller-icon-joystick-computer-icons-game-controllers-joystick-electronics-logo-monochrome-thumbnail.png">
 <style>
     body{
         background-color: green;
@@ -35,13 +36,24 @@
     <br>
 {% if request.user.is_authenticated %}
     <button type="submit" class="button"><a href="{% url 'dino_game' %}">Dino Game</a></button>
+    <br>
     <button type="submit" class="button"><a href="{% url 'translator' %}">Translator</a></button>
+        <br>
     <button type="submit" class="button"><a href="{% url 'calculator' %}">Calculator</a></button>
+<br>
     <button type="submit" class="button"><a href="{% url 'memory_game' %}">Memory Game</a></button>
+<br>
     <button type="submit" class="button"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
+<br>
     <button type="submit" class="button"><a href="{% url 'tic' %}">Tic Tac Toe</a></button>
+<br>
     <button type="submit" class="button"><a href="{% url 'mouse' %}">Tap</a></button>
+<br>
     <button type="submit" class="button"><a href="{% url 'snake' %}">Snake</a></button>
+    <br>
+    <button type="submit" class="button"><a href="{% url 'car' %}">Car Game</a></button>
+    <br>
+    <button type="submit" class="button"><a href="{% url 'bubble' %}">Bubble Game</a></button>
     {% else %}
     {% endif %}
 </center>

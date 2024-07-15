@@ -31,7 +31,9 @@ urlpatterns = [
     path('dino/', dino, name='dino_game'),
     path('chatbot/', chatbot, name='chat_bot'),
     path('translator/', translator, name='translator'),
-    path('games/', games, name='games'),
+    path('games/', games, name='games',),
+    path('car/', car, name='car',),
+    path('bubble/', bubble, name='bubble',),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

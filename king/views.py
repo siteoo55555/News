@@ -260,6 +260,12 @@ def translator(request):
 def games(request):
     ...
     return render(request, 'game.html')
+def car(request):
+    ...
+    return render(request, 'car.html')
+def bubble(request):
+    ...
+    return render(request, 'bubble.html')
 class Create_Profile(View):
     def get(self, request):
         form = ProfileForm()
