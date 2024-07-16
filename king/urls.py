@@ -34,6 +34,8 @@ urlpatterns = [
     path('games/', games, name='games',),
     path('car/', car, name='car',),
     path('bubble/', bubble, name='bubble',),
+    path('gunshooter/', gun_shooter, name='shooter',),
+    path('captcha/', cap, name='cap',),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

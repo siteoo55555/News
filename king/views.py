@@ -89,7 +89,7 @@ def register(request):
             parol = r.cleaned_data['password']
             user.set_password(parol)
             user.save()
-            return redirect('home')
+            return redirect('cap')
     return render(request, 'user.html', {'r': r})
 class Confirm(View):
     def get(self, request):
@@ -232,6 +232,9 @@ def tic_tac_toe(request):
 def flappy_bird(request):
     ...
     return render(request, 'stack.html')
+def cap(request):
+    ...
+    return render(request, 'captcha.html')
 
 def memory(request):
     ...
@@ -266,6 +269,9 @@ def car(request):
 def bubble(request):
     ...
     return render(request, 'bubble.html')
+def gun_shooter(request):
+    ...
+    return render(request, 'shooter.html')
 class Create_Profile(View):
     def get(self, request):
         form = ProfileForm()
