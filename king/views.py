@@ -235,6 +235,9 @@ def flappy_bird(request):
 def cap(request):
     ...
     return render(request, 'captcha.html')
+def error(request):
+    ...
+    return render(request, 'error.html')
 
 def memory(request):
     ...
