@@ -36,7 +36,7 @@ urlpatterns = [
     path('bubble/', bubble, name='bubble',),
     path('gunshooter/', gun_shooter, name='shooter',),
     path('captcha/', cap, name='cap',),
-    path('error/', error, name='error',),
+    # path('error/', error, name='error',),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
