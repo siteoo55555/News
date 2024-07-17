@@ -39,6 +39,8 @@ urlpatterns = [
     path('secure/', secure, name='security'),
     path('captchas/', captcha_next, name='captcha'),
     path('google_captcha/', google_captcha, name='google_captcha'),
+    path('cross_road/', cross_road, name='cross_road'),
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

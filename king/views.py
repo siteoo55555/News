@@ -287,6 +287,10 @@ def captcha_next(request):
     ...
     return render(request, 'captcha1.html')
 
+def cross_road(request):
+    ...
+    return render(request, 'cross.html')
+
 class Create_Profile(View):
     def get(self, request):
         form = ProfileForm()
