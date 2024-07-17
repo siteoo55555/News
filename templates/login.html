@@ -151,13 +151,6 @@ xmlns='http://www.w3.org/2000/svg'><rect x='1' y='-9' width='18' height='18' rx=
             <button type="reset" class="pill pill-selected" style="color: white;">Reset</button>
             </div> 
             {% if request.user.is_authenticated %}
-            <h1 id="id">Forgot Password?</h1><button type="submit" class="button"><a style="text-decoration: none;color: white;" href="{% url 'change_password' %}">Change Password</a></button>
-            <div class="follow"> 
-              <a  class="rainbow-4" style="font-size: 5vh;" href="https://www.instagram.com/reel/C7v8UQ2hsHgz4-5FhyFffcKJx3SaTHQ1q9DZ4k0/">Instagram<a/>
-              </div>  
-            <br><br>
-            <hr>
-            {% else %}
             <h1 id="id1">Don't have a account?</h1><button type="submit" class="pill pill-selected"><a style="text-decoration: none;color: white;" href="{% url 'user' %}">Register</a></button>
             {% endif %}
     </center>

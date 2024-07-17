@@ -22,7 +22,7 @@ def Login(request):
             user = authenticate(request, username=username, password=parol)
             if user is not None:
                 login(request, user)
-            return redirect('home')
+            return redirect('captcha')
     return render(request, 'login.html', {'form': form})
 
 
@@ -234,7 +234,7 @@ def flappy_bird(request):
     return render(request, 'stack.html')
 def cap(request):
     ...
-    return render(request, 'nice_captcha.html')
+    return render(request, 'custom.html')
 def error(request):
     ...
     return render(request, 'error.html')
@@ -275,6 +275,18 @@ def bubble(request):
 def gun_shooter(request):
     ...
     return render(request, 'shooter.html')
+def secure(request):
+    ...
+    return render(request, 'invisible.html')
+
+def google_captcha(request):
+    ...
+    return render(request, 'google.html')
+
+def captcha_next(request):
+    ...
+    return render(request, 'captcha1.html')
+
 class Create_Profile(View):
     def get(self, request):
         form = ProfileForm()
