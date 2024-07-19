@@ -6,7 +6,6 @@ from django.db.models.signals import post_save
 from django.utils import timezone
 from datetime import timedelta
 import random
-
 class User(AbstractUser):
     GENDER=(
         ('male','Male'),
@@ -257,7 +256,7 @@ class User(AbstractUser):
     )
     gender=models.CharField(max_length=10,choices=GENDER,default='male')
     country = models.CharField(max_length=35, choices=COUNTRY,default='Uzbekistan')
-    address = models.CharField(max_length=128)
+    address = models.CharField(max_length=70)
     age = models.CharField(max_length=6, choices=AGE,default='2010')
     active=models.BooleanField(default=False)
     email = models.EmailField(max_length=50)
