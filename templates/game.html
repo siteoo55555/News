@@ -18,19 +18,10 @@
         border-width: 5px;
         border-color: pink;
     }
-    
-    /* .button:hover{
-        background-color: black;
-        /* border-radius: 30px; */
-    /* } */
     a{
         text-decoration: none;
         color: black;
     }   
-    /* a:hover{
-        background-color: black;
-        color: white;
-    } */
     img{
         height: 45px;
         border-radius: 15px;
@@ -63,7 +54,8 @@
 <button type="submit" class="button"><a href="{% url 'typing' %}"><img src="https://www.shutterstock.com/image-vector/hand-typing-on-laptop-working-260nw-1936311493.jpg" alt=""></a></button>
 <button type="submit" class="button"><a href="{% url 'chat_bot' %}"><img src="https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-chatbot-line-icon-vector-png-image_6680403.png" alt=""></a></button>
 <button type="submit" class="button"><a href="{% url 'coronavirus' %}"><img src="https://images.vexels.com/media/users/3/199841/isolated/preview/96a7cac08ad4539e1888d8f5c82b5f48-coronavirus-covid19-icon.png?w=360" alt=""></a></button>
-    {% else %}
+<button type="submit" class="button"><a href="{% url 'quiz' %}"><img src="https://cdn-icons-png.flaticon.com/512/5692/5692030.png" alt=""></a></button>    
+{% else %}
     {% endif %}
 </center>
 </body>
