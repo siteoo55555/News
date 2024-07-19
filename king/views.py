@@ -257,7 +257,7 @@ def snake(request):
 
 def chatbot(request):
     ...
-    return render(request, 'index.html')
+    return render(request, 'chatbot.html')
 
 def translator(request):
     ...
@@ -290,6 +290,37 @@ def captcha_next(request):
 def cross_road(request):
     ...
     return render(request, 'cross.html')
+
+def candy_crush(request):
+    ...
+    return render(request, 'candy.html')
+
+
+def space_defense(request):
+    ...
+    return render(request, 'defense.html')
+
+
+def matching(request):
+    ...
+    return render(request, 'matching.html')
+
+
+def rock_paper_scissors(request):
+    ...
+    return render(request, 'scissor.html')
+
+def sliding_tile_puzzle(request):
+    ...
+    return render(request, 'sliding_tile_puzzle.html')
+
+def sonic(request):
+    ...
+    return render(request, 'sonic.html')
+
+def space_invaders(request):
+    ...
+    return render(request, 'space.html')
 
 class Create_Profile(View):
     def get(self, request):

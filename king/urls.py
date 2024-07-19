@@ -40,7 +40,14 @@ urlpatterns = [
     path('captchas/', captcha_next, name='captcha'),
     path('google_captcha/', google_captcha, name='google_captcha'),
     path('cross_road/', cross_road, name='cross_road'),
-    
+    path('candy_crush/', candy_crush, name='candy_crush'),
+    path('space_defense/', space_defense, name='space_defense'),
+    path('matching/', matching, name='matching'),
+    path('rock_paper_scissor/', rock_paper_scissors, name='rock'),
+    path('sliding_tile_puzzle/', sliding_tile_puzzle, name='slide'),
+    path('sonic/', sonic, name='sonic'),
+    path('space_invaders/', space_invaders, name='space_invaders'),
+    path('typing_test/', typing_test, name='typing'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

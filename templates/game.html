@@ -12,52 +12,56 @@
     .button{
         background-color: white;
         color: black;
-        border-radius: 20px;
+        border-radius: 30px;
         font-size: large;
         border-style: ridge;
-        border-width: 10px;
+        border-width: 5px;
         border-color: pink;
     }
-    .button:hover{
+    
+    /* .button:hover{
         background-color: black;
-    }
+        /* border-radius: 30px; */
+    /* } */
     a{
-        text-decoration: none;color: black;
+        text-decoration: none;
+        color: black;
     }   
-    a:hover{
+    /* a:hover{
         background-color: black;
         color: white;
+    } */
+    img{
+        height: 45px;
+        border-radius: 15px;
     }
 </style>
 </head>
 <body>
     <center>
     <h1 style="background-color: red;color: white;">Games Page</h1>
-    <br>
 {% if request.user.is_authenticated %}
-    <button type="submit" class="button"><a href="{% url 'dino_game' %}">Dino Game</a></button>
-    <br>
-    <button type="submit" class="button"><a href="{% url 'translator' %}">Translator</a></button>
-        <br>
-    <button type="submit" class="button"><a href="{% url 'calculator' %}">Calculator</a></button>
-<br>
-    <button type="submit" class="button"><a href="{% url 'memory_game' %}">Memory Game</a></button>
-<br>
-    <button type="submit" class="button"><a href="{% url 'flappy_bird' %}">Flappy Bird</a></button>
-<br>
-    <button type="submit" class="button"><a href="{% url 'tic' %}">Tic Tac Toe</a></button>
-<br>
-    <button type="submit" class="button"><a href="{% url 'mouse' %}">Tap</a></button>
-<br>
-    <button type="submit" class="button"><a href="{% url 'snake' %}">Snake</a></button>
-    <br>
-    <button type="submit" class="button"><a href="{% url 'car' %}">Car Game</a></button>
-    <br>
-    <button type="submit" class="button"><a href="{% url 'bubble' %}">Bubble Game</a></button>
-    <br>
-    <button type="submit" class="button"><a href="{% url 'shooter' %}">Gun Shooter</a></button>
-    <br>
-    <button type="submit" class="button"><a href="{% url 'Cross Road' %}">Cross Road</a></button>
+<button type="submit" class="button"><a href="{% url 'dino_game' %}"><img src="https://e7.pngegg.com/pngimages/372/920/png-clipart-tyrannosaurus-dino-t-rex-t-rex-chrome-vr-jump-trex-runner-lava-jump-dinosaur-angle-text-thumbnail.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'translator' %}"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Google_Translate_Icon.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'calculator' %}"><img src="https://png.pngtree.com/png-vector/20190115/ourmid/pngtree-vector-calculator-icon-png-image_319747.jpg" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'memory_game' %}"><img src="https://e7.pngegg.com/pngimages/87/903/png-clipart-match-memory-game-uber-genius-mind-games-pro-mind-games-with-arrows-mind-games-thumbnail.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'flappy_bird' %}"><img src="https://w1.pngwing.com/pngs/905/265/png-transparent-flappy-bird-video-games-android-app-store-score-logo-yellow-smile-thumbnail.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'tic' %}"><img src="https://cdn-icons-png.flaticon.com/512/10199/10199746.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'mouse' %}"><img src="https://cdn-icons-png.flaticon.com/512/1835/1835817.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'snake' %}"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/snake-game-625208.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'car' %}"><img src="https://png.pngtree.com/png-vector/20201128/ourmid/pngtree-sports-car-png-image_2434986.jpg" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'bubble' %}"><img src="https://e7.pngegg.com/pngimages/317/166/png-clipart-icepop-tiny-adventure-bubble-story-popping-bubbles-bubble-shoot-talking-tom-bubble-shooter-game-bubble-shooter-adventure-thumbnail.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'shooter' %}"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shooting-game-2638578-2185783.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'cross_road' %}"><img src="https://png.pngtree.com/png-vector/20191114/ourmid/pngtree-crossing-road-icon-flat-style-png-image_1978475.jpg" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'space_defense' %}"><img src="https://cdn-icons-png.freepik.com/256/14959/14959932.png?semt=ais_hybrid" alt=""></a></button> 
+<button type="submit" class="button"><a href="{% url 'candy_crush' %}"><img src="https://w7.pngwing.com/pngs/474/173/png-transparent-candy-crush-saga-game-100-levels-king-farm-heroes-saga-candy-food-king-video-game.png" alt=""></a></button> 
+<button type="submit" class="button"><a href="{% url 'matching' %}"><img src="https://cdn-icons-png.flaticon.com/512/10257/10257147.png" alt=""></a></button>   
+<button type="submit" class="button"><a href="{% url 'rock' %}"><img src="https://cdn-icons-png.flaticon.com/512/6654/6654553.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'slide' %}"><img src="https://idevmobile.com/wp-content/uploads/ico-2048.png" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'space_invaders' %}"><img src="https://banner2.cleanpng.com/20180502/giq/kisspng-space-invaders-get-even-video-game-computer-icons-hogs-5ae9a663d56ef7.3328425515252619238742.jpg" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'sonic' %}"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4PZ0S8EfNRdq8MgfTIgfXhO_DxoiTHNOrUw&s" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'typing' %}"><img src="https://www.shutterstock.com/image-vector/hand-typing-on-laptop-working-260nw-1936311493.jpg" alt=""></a></button>
+<button type="submit" class="button"><a href="{% url 'chat_bot' %}"><img src="https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-chatbot-line-icon-vector-png-image_6680403.png" alt=""></a></button>
     {% else %}
     {% endif %}
 </center>
