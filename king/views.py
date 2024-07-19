@@ -220,10 +220,14 @@ def calculator(request):
 def quiz(request):
     ...
     return render(request, 'quest.html')
+
 def typing_test(request):
     ...
     return render(request, 'typing.html')
 
+def coronavirus(request):
+    ...
+    return render(request, 'coronavirus.html')
 
 def tic_tac_toe(request):
     ...
