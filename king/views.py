@@ -221,6 +221,9 @@ def quiz(request):
     ...
     return render(request, 'quest.html')
 
+def tower_block(request):
+    ...
+    return render(request, 'tower_blocks.html')
 
 def tetris(request):
     ...
