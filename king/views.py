@@ -221,6 +221,11 @@ def quiz(request):
     ...
     return render(request, 'quest.html')
 
+
+def tetris(request):
+    ...
+    return render(request, 'tetris.html')
+
 def typing_test(request):
     ...
     return render(request, 'typing.html')
