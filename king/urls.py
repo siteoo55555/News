@@ -51,6 +51,10 @@ urlpatterns = [
     path('coronavirus_shooting/', coronavirus, name='coronavirus'),
     path('tetris/', tetris, name='tetris'),
     path('tower_block/', tower_block, name='tower'),
+    path('slice_fruit/', slice_fruit, name='slice'),
+    path('flappy/', flappy, name='bird'),
+    path('piano/', piano_game, name='piano'),
+    path('zombie/', zombie_shooter, name='zombie'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -167,6 +167,11 @@ def dino(request):
     ...
     return render(request, 'dino.html')
 
+def slice_fruit(request):
+    ...
+    return render(request, 'slice_fruit.html')
+
+
 def help(request):
     ...
     return render(request, 'help.html')
@@ -225,6 +230,14 @@ def tower_block(request):
     ...
     return render(request, 'tower_blocks.html')
 
+def flappy(request):
+    ...
+    return render(request, 'flappy.html')
+
+def zombie_shooter(request):
+    ...
+    return render(request, 'zombie.html')
+
 def tetris(request):
     ...
     return render(request, 'tetris.html')
@@ -232,6 +245,10 @@ def tetris(request):
 def typing_test(request):
     ...
     return render(request, 'typing.html')
+
+def piano_game(request):
+    ...
+    return render(request, 'piano.html')
 
 def coronavirus(request):
     ...
