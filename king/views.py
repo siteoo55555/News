@@ -230,6 +230,14 @@ def tower_block(request):
     ...
     return render(request, 'tower_blocks.html')
 
+def tilting_maze_game(request):
+    ...
+    return render(request, 'maze_game.html')
+
+def maze(request):
+    ...
+    return render(request, 'maze.html')
+
 def flappy(request):
     ...
     return render(request, 'flappy.html')

@@ -55,6 +55,8 @@ urlpatterns = [
     path('flappy/', flappy, name='bird'),
     path('piano/', piano_game, name='piano'),
     path('zombie/', zombie_shooter, name='zombie'),
+    path('tilting_maze_game/', tilting_maze_game, name='maze'),
+    path('maze_game/', maze, name='maze_game'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
