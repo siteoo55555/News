@@ -148,6 +148,80 @@ xmlns='http://www.w3.org/2000/svg'><rect x='1' y='-9' width='18' height='18' rx=
         {% csrf_token %}
         <div class="box">
           {{form.as_p}}
+          <div class="checkbox-wrapper-37"> 
+            <input type="checkbox" name="checkbox" id="terms-checkbox-37" />
+            <label for="terms-checkbox-37" class="terms-label">
+             <h6 style="color: rgb(210 213 219);">.....................................</h6> <svg
+                class="checkbox-svg"
+                viewBox="0 0 200 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <mask id="path-1-inside-1_476_5-37" fill="white">
+                  <rect width="200" height="200" />
+                </mask>
+                <rect
+                  width="200"
+                  height="200"
+                  class="checkbox-box"
+                  stroke-width="40"
+                  mask="url(#path-1-inside-1_476_5-37)"
+                />
+                <path
+                  class="checkbox-tick"
+                  d="M52 111.018L76.9867 136L149 64"
+                  stroke-width="15"
+                />
+              </svg>
+              <span class="label-text">Remember me</span>
+            </label>
+          </div>
+          
+          <style>
+            .checkbox-wrapper-37 input[type="checkbox"] {
+              display: none;
+            }
+          
+            .checkbox-wrapper-37 .terms-label {
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              border-radius: 55px;
+            }
+          
+            .checkbox-wrapper-37 .terms-label .label-text {
+              margin-left: 10px;
+            }
+          
+            .checkbox-wrapper-37 .checkbox-svg {
+              width: 30px;
+              height: 30px;
+              border-radius: 55px;
+            }
+          
+            .checkbox-wrapper-37 .checkbox-box {
+              fill: black;
+              stroke: red;
+              stroke-dasharray: 800;
+              stroke-dashoffset: 800;
+              border-radius: 55px;
+              transition: stroke-dashoffset 0.6s ease-in;
+            }
+          
+            .checkbox-wrapper-37 .checkbox-tick {
+              stroke: white;
+              stroke-dasharray: 172;
+              stroke-dashoffset: 172;
+              border-radius: 55px;
+              transition: stroke-dashoffset 0.6s ease-in;
+            }
+          
+            .checkbox-wrapper-37 input[type="checkbox"]:checked + .terms-label .checkbox-box,
+            .checkbox-wrapper-37 input[type="checkbox"]:checked + .terms-label .checkbox-tick {
+              stroke-dashoffset: 0;
+            }
+          </style> 
+          
         </div>
         <div class="container text-center">
           <button type="submit" class="pill pill-selected" style="color: white;">Login</button>

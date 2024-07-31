@@ -13,6 +13,20 @@
 html {
   font-size: 10px;
 }
+
+#me {
+    all: unset;
+    cursor: pointer;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: red;
+      font-size: 1.2em;
+    }
+  }
+
+
 body{
     background-color:#f9ead1;
 }
@@ -66,7 +80,6 @@ p {
   font-weight: bold;
   color: #fff;
 }
-/*  伪元素设置的 absolute 也是根据最近的 position:relative 的父元素定位 */
 #score::after {
   content: "SCORE";
   position: absolute;
@@ -129,7 +142,6 @@ button:hover {
   overflow: hidden;
   padding: 10px;
   color: #fff;
-  /*   border:2px #bbada0 solid; */
 }
 
 .item {
@@ -289,6 +301,7 @@ button:hover {
     </style>
 </head>
 <body>
+<h6 style="color: #f9ead1;">........................</h6>
     <div id='container'>
         <div id='head'>
           <h1>2048</h1>
@@ -330,7 +343,35 @@ button:hover {
           <p><strong>HOW TO PLAY:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
           </p>
         </div>
-      </div>
+      </div><br>
+      <center>
+      <button id="me" onclick="toggleFullscreen()">
+        <svg width="30" height="30">
+          <path
+            id="enter-fullscreen"
+            stroke="black"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 2,2 L 2, 10
+               M 20, 2 L 28,2 L 28, 10
+               M 28, 20 L 28,28 L 20, 28
+               M 10, 28 L 2,28 L 2, 20"
+            />
+          <path
+            id="exit-fullscreen"
+            stroke="transparent"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 10,10 L 2, 10
+               M 20, 2 L 20,10 L 28, 10
+               M 28, 20 L 20,20 L 20, 28
+               M 10, 28 L 10,20 L 2, 20"
+            />
+        </svg>
+      </button>
+    </center>
       <script>
         const defaultTraversalX = [0, 1, 2, 3];
 const defaultTraversalY = [0, 1, 2, 3];
@@ -712,6 +753,22 @@ function clearAnimateItem() {
   temp.forEach((t) => t.remove());
 }
 
+      </script>
+      <script>
+        const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "green");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "red");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
       </script>
 </body>
 </html>

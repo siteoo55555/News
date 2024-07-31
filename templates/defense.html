@@ -25,18 +25,11 @@
 }
     </style>
 </head>
-<body>
+<body> 
     <canvas id="canvas"></canvas>
     <a href="https://codepen.io/Loopez10/full/dMaVdQ" class="full-screen" target="_blank"></a>
 <script>
-    //Vanilla JS
-
-//PLAY IN FULL PAGE VIEW!
-
-
 window.addEventListener("DOMContentLoaded", game);
-
-//General sprite load
 var sprite = new Image();
 var spriteExplosion = new Image();
 sprite.src = 'https://marclopezavila.github.io/planet-defense-game/img/sprite.png';
@@ -44,17 +37,11 @@ sprite.src = 'https://marclopezavila.github.io/planet-defense-game/img/sprite.pn
 window.onload = function() {
     spriteExplosion.src = 'https://marclopezavila.github.io/planet-defense-game/img/explosion.png';
 };
-
-//Game
 function game() {
-
-    //Canvas
     var canvas = document.getElementById('canvas'),
         ctx    = canvas.getContext('2d'),
         cH     = ctx.canvas.height = window.innerHeight,
         cW     = ctx.canvas.width  = window.innerWidth ;
-
-    //Game
     var bullets    = [],
         asteroids  = [],
         explosions = [],
@@ -64,8 +51,6 @@ function game() {
         playing    = false,
         gameOver   = false,
         _planet    = {deg: 0};
-
-    //Player
     var player = {
         posX   : -35,
         posY   : -(100+82),
@@ -73,20 +58,16 @@ function game() {
         height : 79,
         deg    : 0
     };
-
     canvas.addEventListener('click', action);
     canvas.addEventListener('mousemove', action);
     window.addEventListener("resize", update);
-
     function update() {
         cH = ctx.canvas.height = window.innerHeight;
         cW = ctx.canvas.width  = window.innerWidth ;
     }
-
     function move(e) {
         player.deg = Math.atan2(e.offsetX - (cW/2), -(e.offsetY - (cH/2)));
     }
-
     function action(e) {
         e.preventDefault();
         if(playing) {

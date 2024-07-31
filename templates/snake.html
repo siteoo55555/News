@@ -16,6 +16,19 @@ body {
   height: 100%;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: #f9bb86;
+      font-size: 1.2em;
+    }
+  }
+
+
 body {
   background: #222;
   background: radial-gradient(#333, #111);
@@ -26,13 +39,6 @@ body {
   font: 100%/1.5 sans-serif;
   overflow: hidden;
 }
-
-/*================================================
-
-Score
-
-================================================*/
-
 .score {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
@@ -40,13 +46,6 @@ Score
   padding-top: 5px;
   text-align: center;
 }
-
-/*================================================
-
-Stage
-
-================================================*/
-
 .stage {
   bottom: 0;
   left: 0;
@@ -57,11 +56,7 @@ Stage
   z-index: 2;
 }
 
-/*================================================
 
-Tiles
-
-================================================*/
 
 .tile {
   background: rgba(0, 0, 0, 0.15);
@@ -146,21 +141,34 @@ Tiles
 <body>
 	<div class="score">0</div>
 	<div class="stage"></div>
+  <button onclick="toggleFullscreen()">
+    <svg width="30" height="30">
+      <path
+        id="enter-fullscreen"
+        stroke="black"
+        stroke-width="3"
+        fill="none"
+        d="
+           M 10, 2 L 2,2 L 2, 10
+           M 20, 2 L 28,2 L 28, 10
+           M 28, 20 L 28,28 L 20, 28
+           M 10, 28 L 2,28 L 2, 20"
+        />
+      <path
+        id="exit-fullscreen"
+        stroke="transparent"
+        stroke-width="3"
+        fill="none"
+        d="
+           M 10, 2 L 10,10 L 2, 10
+           M 20, 2 L 20,10 L 28, 10
+           M 28, 20 L 20,20 L 20, 28
+           M 10, 28 L 10,20 L 2, 20"
+        />
+    </svg>
+  </button>
 	<script>
-		/*================================================
-
-Polyfill
-
-================================================*/
-
 (function(){ 'use strict';
-
-/*================================================
-
-Request Animation Frame
-
-================================================*/
-
 var lastTime = 0;
 var vendors = [ 'webkit', 'moz' ];
 for( var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x ) {
@@ -188,13 +196,6 @@ if( !window.cancelAnimationFrame ) {
 }
 
 })();
-
-/*================================================
-
-DOM Manipulation
-
-================================================*/
-
 (function(){ 'use strict';
 
 function hasClass( elem, className ) {
@@ -230,36 +231,14 @@ function toggleClass( elem, className ) {
 };
 
 })();
-
-/*================================================
-
-Core
-
-================================================*/
-
 g = {};
-
 (function(){ 'use strict';
-
-/*================================================
-
-Math
-
-================================================*/
-
 g.m = Math;
 g.mathProps = 'E LN10 LN2 LOG2E LOG10E PI SQRT1_2 SQRT2 abs acos asin atan ceil cos exp floor log round sin sqrt tan atan2 pow max min'.split( ' ' );
 for ( var i = 0; i < g.mathProps.length; i++ ) {
   g[ g.mathProps[ i ] ] = g.m[ g.mathProps[ i ] ];
 }
 g.m.TWO_PI = g.m.PI * 2;
-
-/*================================================
-
-Miscellaneous
-
-================================================*/
-
 g.isset = function( prop ) {
   return typeof prop != 'undefined';
 };
@@ -271,13 +250,6 @@ g.log = function() {
 };
 
 })();
-
-/*================================================
-
-Group
-
-================================================*/
-
 (function(){ 'use strict';
 
 g.Group = function() {
@@ -1087,5 +1059,21 @@ window.addEventListener( 'load', g.step, false );
 
 })();
 	</script>
+  <script>
+    const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "red");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "white");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
+  </script>
 </body>
 </html>

@@ -22,9 +22,9 @@ def Login(request):
             user = authenticate(request, username=username, password=parol)
             if user is not None:
                 login(request, user)
+                messages.success(request, f"Siz , {user.username}, login qilindingiz !")
             return redirect('captcha')
     return render(request, 'login.html', {'form': form})
-
 
 class Home(View):
     def get(self, request):
@@ -162,20 +162,6 @@ class Create_Channel(View):
             group.tur = 'guruh'
             group.save()
             return redirect('add', group.id)
-
-def dino(request):
-    ...
-    return render(request, 'dino.html')
-
-def slice_fruit(request):
-    ...
-    return render(request, 'slice_fruit.html')
-
-
-def help(request):
-    ...
-    return render(request, 'help.html')
-
 class Change_Password(View):
     def get(self, request):
         form = PasswordForm()
@@ -221,7 +207,21 @@ def create_profile(request):
 def calculator(request):
     ...
     return render(request, 'calc.html')
+def dino(request):
+    ...
+    return render(request, 'dino.html')
 
+def slice_fruit(request):
+    ...
+    return render(request, 'slice_fruit.html')
+
+def weather(request):
+    ...
+    return render(request, 'weather.html')
+
+def help(request):
+    ...
+    return render(request, 'help.html')
 def quiz(request):
     ...
     return render(request, 'quest.html')
@@ -234,17 +234,38 @@ def tilting_maze_game(request):
     ...
     return render(request, 'maze_game.html')
 
+def color_captcha(request):
+    ...
+    return render(request, 'verification.html')
+
+
 def maze(request):
     ...
     return render(request, 'maze.html')
+
+def stick_hero_game(request):
+    ...
+    return render(request, 'stick_hero.html')
 
 def flappy(request):
     ...
     return render(request, 'flappy.html')
 
+def gozilla_game(request):
+    ...
+    return render(request, 'gozilla.html')
+
+def stop_watch(request):
+    ...
+    return render(request, 'stop_watch.html')
+
 def zombie_shooter(request):
     ...
     return render(request, 'zombie.html')
+
+def predict_gender(request):
+    ...
+    return render(request, 'predict_gender.html')
 
 def tetris(request):
     ...

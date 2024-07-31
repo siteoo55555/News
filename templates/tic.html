@@ -43,7 +43,7 @@ body {
   height:90px;
   margin:5px;
   border-radius: 0.3em;
-  background:hsl(300, 15%, 33%);
+  background:greenyellow;
 }
 
 .cell.circle,
@@ -140,6 +140,19 @@ body {
   transform:translate(-50%, -100%);
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+@media (display-mode: fullscreen) {
+  body {
+    background-color: powderblue;
+    font-size: 1.2em;
+  }
+}
+
+
 header {
   max-width: 320px;
   margin:0 auto 20px;
@@ -190,8 +203,8 @@ header {
 }
 
 .scores li.won {
-  background: hsla(300, 15%, 53%, 1);
-  animation: win 300ms;
+  background: red;
+  animation: win 500ms;
 }
 
 @keyframes win {
@@ -226,6 +239,32 @@ header {
     </style>
 </head>
 <body>
+  <button onclick="toggleFullscreen()">
+    <svg width="30" height="30">
+      <path
+        id="enter-fullscreen"
+        stroke="black"
+        stroke-width="3"
+        fill="none"
+        d="
+           M 10, 2 L 2,2 L 2, 10
+           M 20, 2 L 28,2 L 28, 10
+           M 28, 20 L 28,28 L 20, 28
+           M 10, 28 L 2,28 L 2, 20"
+        />
+      <path
+        id="exit-fullscreen"
+        stroke="transparent"
+        stroke-width="3"
+        fill="none"
+        d="
+           M 10, 2 L 10,10 L 2, 10
+           M 20, 2 L 20,10 L 28, 10
+           M 28, 20 L 20,20 L 20, 28
+           M 10, 28 L 10,20 L 2, 20"
+        />
+    </svg>
+  </button>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 <div class="drawer">
@@ -731,6 +770,22 @@ function endState(winner) {
 }
 
 initState();
+  </script>
+  <script>
+   const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "black");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "white");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+} 
   </script>
 </body>
 </html>

@@ -15,6 +15,19 @@
   box-sizing: inherit;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: red;
+      font-size: 1.2em;
+    }
+  }
+
+
 html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -115,7 +128,9 @@ h2 {
     </style>
   </head>
   <body>
+    <br><br>
     <h1>Whack-a-mole!</h1>
+    <br>
     <h2>Score: <span class="score">0</span></h2>
     <button id="start" onClick="startGame()">Start</button>
     <div class="game">
@@ -138,6 +153,33 @@ h2 {
         <div class="mole"></div>
       </div>
     </div>
+    <h1></h1>
+    <button onclick="toggleFullscreen()">
+      <svg width="30" height="30">
+        <path
+          id="enter-fullscreen"
+          stroke="black"
+          stroke-width="3"
+          fill="none"
+          d="
+             M 10, 2 L 2,2 L 2, 10
+             M 20, 2 L 28,2 L 28, 10
+             M 28, 20 L 28,28 L 20, 28
+             M 10, 28 L 2,28 L 2, 20"
+          />
+        <path
+          id="exit-fullscreen"
+          stroke="transparent"
+          stroke-width="3"
+          fill="none"
+          d="
+             M 10, 2 L 10,10 L 2, 10
+             M 20, 2 L 20,10 L 28, 10
+             M 28, 20 L 20,20 L 20, 28
+             M 10, 28 L 10,20 L 2, 20"
+          />
+      </svg>
+    </button>
 <script>
     const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
@@ -195,6 +237,22 @@ function bonk(e) {
 }
 
 moles.forEach(mole => mole.addEventListener('click', bonk));
+</script>
+<script>
+  const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "red");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "green");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
 </script>
   </body>
 </html>

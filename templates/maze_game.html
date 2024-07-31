@@ -17,6 +17,19 @@
   background-color: var(--background-color);
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+@media (display-mode: fullscreen) {
+  body {
+    background-color: #f9bb86;
+    font-size: 1.2em;
+  }
+}
+
+
 html,
 body {
   height: 100%;
@@ -205,6 +218,32 @@ a:visited {
     <meta name="viewport" content="width=device-width" />
   </head>
   <body>
+    <button onclick="toggleFullscreen()">
+      <svg width="30" height="30">
+        <path
+          id="enter-fullscreen"
+          stroke="black"
+          stroke-width="3"
+          fill="none"
+          d="
+             M 10, 2 L 2,2 L 2, 10
+             M 20, 2 L 28,2 L 28, 10
+             M 28, 20 L 28,28 L 20, 28
+             M 10, 28 L 2,28 L 2, 20"
+          />
+        <path
+          id="exit-fullscreen"
+          stroke="transparent"
+          stroke-width="3"
+          fill="none"
+          d="
+             M 10, 2 L 10,10 L 2, 10
+             M 20, 2 L 20,10 L 28, 10
+             M 28, 20 L 20,20 L 20, 28
+             M 10, 28 L 10,20 L 2, 20"
+          />
+      </svg>
+    </button>
     <div id="center">
       <div id="game">
         <div id="maze">
@@ -295,8 +334,6 @@ const rollAroundCap = (cap, ball) => {
 
   return { x, y, velocityX, velocityY, nextX, nextY };
 };
-
-// Decreases the absolute value of a number but keeps it's sign, doesn't go below abs 0
 const slow = (number, difference) => {
   if (Math.abs(number) <= difference) return 0;
   if (number > difference) return number - difference;
@@ -319,7 +356,7 @@ let frictionY;
 
 const pathW = 25; // Path width
 const wallW = 10; // Wall width
-const ballSize = 10; // Width and height of the ball
+const ballSize = 10;
 const holeSize = 18;
 
 const debugMode = false;
@@ -342,46 +379,29 @@ balls.forEach(({ x, y }) => {
 
 // Wall metadata
 const walls = [
-  // Border
   { column: 0, row: 0, horizontal: true, length: 10 },
   { column: 0, row: 0, horizontal: false, length: 9 },
   { column: 0, row: 9, horizontal: true, length: 10 },
   { column: 10, row: 0, horizontal: false, length: 9 },
-
-  // Horizontal lines starting in 1st column
   { column: 0, row: 6, horizontal: true, length: 1 },
   { column: 0, row: 8, horizontal: true, length: 1 },
-
-  // Horizontal lines starting in 2nd column
   { column: 1, row: 1, horizontal: true, length: 2 },
   { column: 1, row: 7, horizontal: true, length: 1 },
-
-  // Horizontal lines starting in 3rd column
   { column: 2, row: 2, horizontal: true, length: 2 },
   { column: 2, row: 4, horizontal: true, length: 1 },
   { column: 2, row: 5, horizontal: true, length: 1 },
   { column: 2, row: 6, horizontal: true, length: 1 },
-
-  // Horizontal lines starting in 4th column
   { column: 3, row: 3, horizontal: true, length: 1 },
   { column: 3, row: 8, horizontal: true, length: 3 },
 
   // Horizontal lines starting in 5th column
   { column: 4, row: 6, horizontal: true, length: 1 },
-
-  // Horizontal lines starting in 6th column
   { column: 5, row: 2, horizontal: true, length: 2 },
   { column: 5, row: 7, horizontal: true, length: 1 },
-
-  // Horizontal lines starting in 7th column
   { column: 6, row: 1, horizontal: true, length: 1 },
   { column: 6, row: 6, horizontal: true, length: 2 },
-
-  // Horizontal lines starting in 8th column
   { column: 7, row: 3, horizontal: true, length: 2 },
   { column: 7, row: 7, horizontal: true, length: 2 },
-
-  // Horizontal lines starting in 9th column
   { column: 8, row: 1, horizontal: true, length: 1 },
   { column: 8, row: 2, horizontal: true, length: 1 },
   { column: 8, row: 3, horizontal: true, length: 1 },
@@ -882,7 +902,7 @@ function main(timestamp) {
         ${!hardMode ? "<p>Press H for hard mode</p>" : ""}
         <p>
           Follow me on INSTAGRAM <br>
-          <a href="", target="_blank"
+          <a href="https://www.instagram.com/godwilling_python_programmer/", target="_blank"
             >@MuhammadZabihulloh</a
           >
         </p>`;
@@ -904,5 +924,21 @@ function main(timestamp) {
   }
 }
     </script>
-  </body>
+<script>
+  const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "black");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "black");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
+</script>  
+</body>
 </html>

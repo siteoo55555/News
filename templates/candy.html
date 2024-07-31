@@ -20,6 +20,20 @@
     color: #85796b;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+    color: red;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: powderblue;
+      font-size: 1.2em;
+    }
+  }
+
+
 .grid div {
     height: 70px;
     width: 70px;
@@ -47,28 +61,56 @@ body {
 }
 
 .scoreContent {
-    background-color: cyan;
+    background-color: rgb(0, 0, 0);
     border-radius: 20px;
     margin-top: 200px;
     margin-left: 200px;
     width: auto;
-    height: 120px;
+    height: 100px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    color: #85796b;
+    color: paleturquoise;
 }
     </style>
 </head>
 <body>
+    <br>
     <div class="scoreContent">
         <h3>score</h3>
         <h1 id="score"></h1>
     </div>
+    <br><br><br><br>
     <div class="grid"></div>
+    <button onclick="toggleFullscreen()">
+        <svg width="30" height="30">
+          <path
+            id="enter-fullscreen"
+            stroke="black"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 2,2 L 2, 10
+               M 20, 2 L 28,2 L 28, 10
+               M 28, 20 L 28,28 L 20, 28
+               M 10, 28 L 2,28 L 2, 20"
+            />
+          <path
+            id="exit-fullscreen"
+            stroke="transparent"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 10,10 L 2, 10
+               M 20, 2 L 20,10 L 28, 10
+               M 28, 20 L 20,20 L 20, 28
+               M 10, 28 L 10,20 L 2, 20"
+            />
+        </svg>
+      </button>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
     candyCrushGame();
@@ -344,6 +386,22 @@ function candyCrushGame() {
     }, 100);
 }
 
+    </script>
+    <script>
+        const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "black");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "black");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
     </script>
 </body>
 </html>

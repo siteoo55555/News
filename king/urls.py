@@ -57,6 +57,12 @@ urlpatterns = [
     path('zombie/', zombie_shooter, name='zombie'),
     path('tilting_maze_game/', tilting_maze_game, name='maze'),
     path('maze_game/', maze, name='maze_game'),
+    path('weather/', weather, name='weather'),
+    path('color_captcha/', color_captcha, name='color_captcha'),
+    path('gozilla_game/', gozilla_game, name='gozilla'),
+    path('stick_hero_game/', stick_hero_game, name='stick_hero'),
+    path('predict_gender_by_name/', predict_gender, name='predict'),
+    path('stop_watch/', stop_watch, name='stop_watch'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

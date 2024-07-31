@@ -11,9 +11,26 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <style>
+    body{
+        background-color: rgb(0, 128, 255);
+    }
     footer {
     color: yellow;
 }
+
+button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: #9d00ff;
+      font-size: 1.2em;
+    }
+  }
+
+
 .canvas{
     width: 100%;
     height: 500px;
@@ -158,6 +175,7 @@ const destroy = async (event)=> {
     totalScore+=1;
 }
 </script>
+<h6></h6>
     <title>Gun Shooter Game</title>
 </head>
 
@@ -182,7 +200,50 @@ const destroy = async (event)=> {
     <footer class="bg-dark text-center p-2">
         <h1 style="font-size: 2em;">Balloon Shoot Game by <a target="_blank" style="text-decoration: none;color: rgb(0, 128, 255);" href="https://www.instagram.com/reel/C712kgZBpkQI1jv3eFkZgJiRwgpPhExmB3gPAc0/">Muhammad Zabihulloh</a></h1>
     </footer>
+    <br>
+    <center>
+    <button onclick="toggleFullscreen()">
+        <svg width="30" height="30">
+          <path
+            id="enter-fullscreen"
+            stroke="black"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 2,2 L 2, 10
+               M 20, 2 L 28,2 L 28, 10
+               M 28, 20 L 28,28 L 20, 28
+               M 10, 28 L 2,28 L 2, 20"
+            />
+          <path
+            id="exit-fullscreen"
+            stroke="transparent"
+            stroke-width="3"
+            fill="none"
+            d="
+               M 10, 2 L 10,10 L 2, 10
+               M 20, 2 L 20,10 L 28, 10
+               M 28, 20 L 20,20 L 20, 28
+               M 10, 28 L 10,20 L 2, 20"
+            />
+        </svg>
+      </button>
+      </center>
+      <script>
+        const enterFullscreen = document.getElementById("enter-fullscreen");
+const exitFullscreen = document.getElementById("exit-fullscreen");
 
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    enterFullscreen.setAttribute("stroke", "transparent");
+    exitFullscreen.setAttribute("stroke", "white");
+  } else {
+    document.exitFullscreen();
+    enterFullscreen.setAttribute("stroke", "red");
+    exitFullscreen.setAttribute("stroke", "transparent");
+  }
+}
+      </script>
 </body>
-
 </html>

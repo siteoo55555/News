@@ -13,6 +13,19 @@
   overflow: hidden;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  @media (display-mode: fullscreen) {
+    body {
+      background-color: #f9bb86;
+      font-size: 1.2em;
+    }
+  }
+
+
 canvas {
   display: block;
   margin: auto;
@@ -33,76 +46,38 @@ canvas {
     <link href='https://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 <canvas id="game-canvas" width="640" height="640"></canvas>
 <script>
-    /* Simple JavaScript Inheritance
- * By John Resig http://ejohn.org/
- * MIT Licensed.
- */
-// Inspired by base2 and Prototype
 (function(){
   var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
- 
-  // The base Class implementation (does nothing)
   this.Class = function(){};
- 
-  // Create a new Class that inherits from this class
   Class.extend = function(prop) {
     var _super = this.prototype;
-   
-    // Instantiate a base class (but only create the instance,
-    // don't run the init constructor)
     initializing = true;
     var prototype = new this();
     initializing = false;
-   
-    // Copy the properties over onto the new prototype
     for (var name in prop) {
-      // Check if we're overwriting an existing function
       prototype[name] = typeof prop[name] == "function" &&
         typeof _super[name] == "function" && fnTest.test(prop[name]) ?
         (function(name, fn){
           return function() {
             var tmp = this._super;
-           
-            // Add a new ._super() method that is the same method
-            // but on the super-class
             this._super = _super[name];
-           
-            // The method only need to be bound temporarily, so we
-            // remove it when we're done executing
             var ret = fn.apply(this, arguments);        
             this._super = tmp;
-           
             return ret;
           };
         })(name, prop[name]) :
         prop[name];
     }
-   
-    // The dummy class constructor
     function Class() {
-      // All construction is actually done in the init method
       if ( !initializing && this.init )
         this.init.apply(this, arguments);
     }
-   
-    // Populate our constructed prototype object
     Class.prototype = prototype;
-   
-    // Enforce the constructor to be what we expect
     Class.prototype.constructor = Class;
- 
-    // And make this class extendable
     Class.extend = arguments.callee;
-   
     return Class;
   };
 })();
-
-
-// ###################################################################
-// shims
-//
-// ###################################################################
 (function() {
   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   window.requestAnimationFrame = requestAnimationFrame;
@@ -114,11 +89,6 @@ canvas {
       function() { return Date.now(); }
   }
 })();
-
-// ###################################################################
-// Constants
-//
-// ###################################################################
 var IS_CHROME = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 var CANVAS_WIDTH = 640;
 var CANVAS_HEIGHT = 640;
@@ -133,44 +103,32 @@ var ALIEN_MIDDLE_ROW = [ { x: 0, y: 137, w: 50, h: 33 }, { x: 0, y: 170, w: 50, 
 var ALIEN_TOP_ROW = [ { x: 0, y: 68, w: 50, h: 32 }, { x: 0, y: 34, w: 50, h: 32 }];
 var ALIEN_X_MARGIN = 40;
 var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN;
-
-
-
-// ###################################################################
-// Utility functions & classes
-//
-// ###################################################################
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
-
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function clamp(num, min, max) {
   return Math.min(Math.max(num, min), max);
 }
-
 function valueInRange(value, min, max) {
   return (value <= max) && (value >= min);
 }
- 
+
 function checkRectCollision(A, B) {
   var xOverlap = valueInRange(A.x, B.x, B.x + B.w) ||
-  valueInRange(B.x, A.x, A.x + A.w);
- 
+  valueInRange(B.x, A.x, A.x + A.w); 
   var yOverlap = valueInRange(A.y, B.y, B.y + B.h) ||
   valueInRange(B.y, A.y, A.y + A.h); 
   return xOverlap && yOverlap;
 }
-
 var Point2D = Class.extend({
   init: function(x, y) {
     this.x = (typeof x === 'undefined') ? 0 : x;
     this.y = (typeof y === 'undefined') ? 0 : y;
   },
-  
+ 
   set: function(x, y) {
     this.x = x;
     this.y = y;
@@ -192,13 +150,6 @@ var Rect = Class.extend({
     this.h = h;
   }
 });
-
-
-
-// ###################################################################
-// Globals
-//
-// ###################################################################
 var canvas = null;
 var ctx = null;
 var spriteSheetImg = null;
@@ -215,13 +166,6 @@ var alienYDown = 0;
 var alienCount = 0;
 var wave = 1;
 var hasGameStarted = false;
-
-
-
-// ###################################################################
-// Entities
-//
-// ###################################################################
 var BaseSprite = Class.extend({
   init: function(img, x, y) {
     this.img = img;
@@ -326,21 +270,13 @@ var Player = SheetSprite.extend({
   },
   
   update: function(dt) {
-    // update time passed between shots
     this.bulletDelayAccumulator += dt;
-    
-    // apply x vel
     this.position.x += this.xVel * dt;
-    
-    // cap player position in screen bounds
     this.position.x = clamp(this.position.x, this.bounds.w/2, CANVAS_WIDTH - this.bounds.w/2);
     this.updateBullets(dt);
   },
-  
   draw: function(resized) {
     this._super(resized);
-
-    // draw bullets
     for (var i = 0, len = this.bullets.length; i < len; i++) {
       var bullet = this.bullets[i];
       if (bullet.alive) {
@@ -349,7 +285,6 @@ var Player = SheetSprite.extend({
     }
   }
 });
-
 var Bullet = BaseSprite.extend({
   init: function(x, y, direction, speed) {
     this._super(bulletImg, x, y);
