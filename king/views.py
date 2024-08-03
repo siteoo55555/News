@@ -255,10 +255,6 @@ def gozilla_game(request):
     ...
     return render(request, 'gozilla.html')
 
-def games_poki(request):
-    ...
-    return render(request, 'games.html')
-
 def country_guide(request):
     ...
     return render(request, 'country_guide.html')
