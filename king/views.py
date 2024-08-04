@@ -259,6 +259,10 @@ def country_guide(request):
     ...
     return render(request, 'country_guide.html')
 
+def spiderman_game(request):
+    ...
+    return render(request, 'spider_man.html')
+
 def stop_watch(request):
     ...
     return render(request, 'stop_watch.html')

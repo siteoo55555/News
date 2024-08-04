@@ -64,6 +64,7 @@ urlpatterns = [
     path('predict_gender_by_name/', predict_gender, name='predict'),
     path('stop_watch/', stop_watch, name='stop_watch'),
     path('country_guide_app/', country_guide, name='country_guide'),
+    path('spiderman_game/', spiderman_game, name='spiderman_game'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
