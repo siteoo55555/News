@@ -16,12 +16,6 @@
       {% if not request.user.is_authenticated %}
     <button type="button" class="btn btn-outline-primary"><a href="{% url 'create_profile' %}">Create_Profile</a></button>
     {% else %}
-    <button type="submit"><a href="{% url 'games' %}">Games</a></button>    
-    <button type="button"><a href="{% url 'help' %}">Help</a></button>
-    <button type="submit"><a href="{% url 'user_edit' %}">User Edit</a></button>
-    <button type="submit"><a href="{% url 'about' %}">About Our Community</a></button>
-    <button type="submit"><a href="{% url 'change_password' %}">Change Password</a></button>
-    <button type="submit"><a href="{% url 'logout' %}">Logout</a></button>
     <!-- <button type="submit"><a href="{% url 'name' %}">Create Group</a></button>
     <button type="button"><a href="{% url 'channel' %}">Create Channel</a></button> -->
   </center>
@@ -30,7 +24,35 @@
   <div class="leftPanel">
     <header>
       <button class="trigger">
-    <i class="fa-solid fa-bars" style="width: 35px;height: 35px;margin-top: -9px;margin-left: -8px;margin-right: -15px;margin-bottom: -10px;"></i>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <button type="submit"><a href="{% url 'games' %}">Games</a></button>    
+                <button type="button"><a href="{% url 'help' %}">Help</a></button>
+                <button type="submit"><a href="{% url 'user_edit' %}">User Edit</a></button>
+                <button type="submit"><a href="{% url 'about' %}">About Our Community</a></button>
+                <button type="submit"><a href="{% url 'change_password' %}">Change Password</a></button>
+                <button type="submit"><a href="{% url 'logout' %}">Logout</a></button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+    <!-- <i class="fa-solid fa-bars" style="width: 35px;height: 35px;margin-top: -9px;margin-left: -8px;margin-right: -15px;margin-bottom: -10px;"></i> -->
       </button>
       <form action="" method="get">
       <input  name="search" class="searchChats" type="search" placeholder="Search"/>
@@ -109,30 +131,6 @@
       </div>
       {% else %}
       {% endif %}
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
     <div class="convHistory userBg">
       <!-- CONVERSATION GOES HERE! -->
       {% for j in chat.chat_messages.all %}
