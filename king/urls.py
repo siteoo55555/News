@@ -65,6 +65,7 @@ urlpatterns = [
     path('stop_watch/', stop_watch, name='stop_watch'),
     path('country_guide_app/', country_guide, name='country_guide'),
     path('spiderman_game/', spiderman_game, name='spiderman_game'),
+    path('car_game/', car_game_pro, name='car_game'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

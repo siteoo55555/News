@@ -321,6 +321,10 @@ def snake(request):
     ...
     return render(request, 'snake.html')
 
+def car_game_pro(request):
+    ...
+    return render(request, 'Main_menu.html')
+
 def chatbot(request):
     ...
     return render(request, 'chatbot.html')
